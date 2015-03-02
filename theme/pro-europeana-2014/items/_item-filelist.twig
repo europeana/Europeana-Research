@@ -1,0 +1,18 @@
+{#
+  used in:
+    - record_blogpost
+    - record_job
+    - record_person
+    - record_event
+    - record_taskforce
+    - listing_list
+#}
+{% if records %}
+<ul class="item-files">
+    {% for file in records %}
+        {% set finfo = fileInfo(file) %}
+        <li><a href="{{ paths.files }}{{ file.filename }}">{{ finfo.filename }}</a> <span class="file-info">{{ finfo.filetype }} {{ finfo.filesize }}</span></li>
+    {% endfor %}
+</ul>
+{% endif %}
+

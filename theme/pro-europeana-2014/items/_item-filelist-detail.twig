@@ -1,0 +1,27 @@
+{#
+  used in:
+    - record_publication
+    - record_event
+    - generic
+#}
+
+
+{% if filelist %}
+<form {{ fileDownloadAction() }} >
+    <ul class="item-files moredata">
+        {% for file in filelist %}
+            {% set fileinfo = fileInfo(file) %}
+            <li>
+                <span class="file-name">
+                    <a href="{{ paths.files }}{{ file.filename }}" >{{ fileinfo.filename }}</a>
+                    <span class="file-info">{{ fileinfo.filetype }} {{ fileinfo.filesize }}</span>
+                </span>
+
+                <span class="file-owner">{{ file.owner|default('') }}</span>
+                <span class="file-date">{{ fileinfo.filedate }}</span>
+            </li>
+        {% endfor %}
+    </ul>
+</form>
+{% endif %}
+
