@@ -3,13 +3,13 @@
 
 
 # The name of the website
-sitename: Europeana Professional
-payoff: The Europeana Foundation
+sitename: Europeana Research
+payoff: The Europeana Research
 
 # The theme to use. Be sure to copy the {theme_path}/base-2013 folder, and change the
 # name here accordingly. Don't edit the templates in theme/base-2013, because
 # they _will_ get updated in next releases
-theme: pro-europeana-2014
+theme: research-europeana-2015
 
 # The locale that'll be used by the application. If no locale is set the
 # fallback locale is 'en_GB'. For available options, see: http://docs.bolt.cm/locales

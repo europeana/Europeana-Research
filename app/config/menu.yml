@@ -1,13 +1,13 @@
-primary:
-  - title: 'Get involved'
-    path: /get-involved
-    label: 'Get involved'
-  - title: 'Provide your data'
-    path: /share-your-data
-    label: 'Share your data'
-  - title: 'Use our data'
-    path: /use-our-data
-    label: 'Use our data'
+primary: []
+#   - title: 'Get involved'
+#     path: /get-involved
+#     label: 'Get involved'
+#   - title: 'Provide your data'
+#     path: /share-your-data
+#     label: 'Share your data'
+#   - title: 'Use our data'
+#     path: /use-our-data
+#     label: 'Use our data'
 footer:
   - title: Home
     path: homepage
