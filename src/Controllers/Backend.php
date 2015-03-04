@@ -972,7 +972,6 @@ class Backend implements ControllerProviderInterface
         if ($hasRelations || $hasIncomingRelations) {
             $addGroup('relations', Trans::__('contenttypes.generic.group.relations'));
         }
- 
         if ($hasTaxonomy || (is_array($contenttype['groups']) && in_array('taxonomy', $contenttype['groups']))) {
             $addGroup('taxonomy', Trans::__('contenttypes.generic.group.taxonomy'));
         }

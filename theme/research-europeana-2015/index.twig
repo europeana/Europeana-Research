@@ -17,6 +17,8 @@
         </div>
     </div>
 
+{# -- "pro-info section" commented out for 'research' -- 
+
     <div class="pro-info section">
     <div class="lc">
 
@@ -58,6 +60,7 @@
 
     </div>
     </div>
+    --------- #}
 
     <div class="section home-news">
         <div class="lc">
@@ -113,14 +116,14 @@
                                 </div>
                             </a>
                         </div>
-                    </div><!--
+                    </div><!-- 
                  -->{% endfor %}
 
                     {# END - related/latest blogposts #}
 
                 </div>
 
-                <a class="link-more" href="{{ paths.root }}blogposts">More from the Europeana professional Blog</a>
+                <a class="link-more" href="{{ paths.root }}blogposts">More from the Europeana Research Blog</a>
             </div><!-- <div class="l-newsfeed">
 
                 {# set twitter feed - disabled #}
@@ -135,7 +138,9 @@
         </div>
     </div>
 
+
     {# get the nearest two EVENTS #}
+    {# -- Events commented out for 'research' -- 
     {% setcontent events = 'Events' limit 2 orderby 'start_event ASC' %}
     {% if events is defined %}
 
@@ -161,6 +166,7 @@
         </div>
     </div>
     {% endif %}
+    ------ #}
 
 <!-- End main content -->
 </main>

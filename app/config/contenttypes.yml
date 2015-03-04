@@ -101,11 +101,11 @@ blogposts:
   # Show on Blog page
   taxonomy: [ tags, tree ]
   relations:
-    # persons:
-    #   label: "Author(s)"
-    #   multiple: true
-    #   format: "{{ item.last_name }}, {{ item.first_name }}"
-    #   order: last_name
+    persons:
+      label: "Author(s)"
+      multiple: true
+      format: "{{ item.last_name }}, {{ item.first_name }}"
+      order: last_name
     # person:
     #   multiple: true
     #   label: "Contact(s)"
@@ -154,6 +154,8 @@ blogposts:
     #   format: "{{ item.title|escape }}"
   record_template: record_blogpost.twig
   recordsperpage: 100
+  icon_many: "fa:calendar-o"
+  icon_one: "fa:calendar-o"  
 
 
 #################################
@@ -271,11 +273,11 @@ pages:
       group: "Support navigation"
   taxonomy: [ tags, tree ]
   relations:
-    # persons:
-    #   label: "Contact(s)"
-    #   multiple: true
-    #   format: "{{ item.last_name }}, {{ item.first_name }}"
-    #   order: last_name
+    persons:
+      label: "Contact(s)"
+      multiple: true
+      format: "{{ item.last_name }}, {{ item.first_name }}"
+      order: last_name
     pages:
       multiple: true
       label: "Pages"
@@ -317,6 +319,8 @@ pages:
     #   order: -id
     #   format: "{{ item.title|escape }}"
   record_template: record_page.twig
+  icon_many: "fa:file-text"
+  icon_one: "fa:file-text"    
 
 #################################
 #
@@ -403,7 +407,210 @@ structures:
       format: "{{ item.last_name }}, {{ item.first_name }}"
   record_template: overview_structure.twig
   recordsperpage: 1000
+  icon_many: "fa:puzzle-piece"
+  icon_one: "fa:puzzle-piece"      
   # viewless: true
+
+ 
+
+
+#################################
+#
+# PERSON
+#
+# Notes:
+# The permalink should be /people/{first name}-{last-name} eg. /people/dean-birkett
+#
+#
+#################################
+persons:
+  name: Persons
+  singular_name: Person
+  fields:
+    # Show on Staff list page, Staff page, Events page (speakers), Contact info block
+    first_name:
+      type: text
+      required: true
+      label: "First name"
+      variant: inline
+      class: narrow
+      postfix: "<em><small>(required)</small></em>"      
+      group: "Personal details"
+    # Show on Staff list page, Staff page, Events page (speakers), Contact info block
+    last_name:
+      type: text
+      required: true
+      label: "Last name"
+      postfix: "<em><small>(required)</small></em>"
+      variant: inline
+      class: narrow
+    slug:
+      type: slug
+      uses: [ first_name, last_name ]
+    company:
+      type: text
+      required: false
+      label: "Company:"
+      postfix: (if not Europeana Foundation)
+      variant: inline
+      class: narrow
+    company_url:
+      type: text
+      required: false
+      label: "Company URL:"
+      postfix: (if not Europeana Foundation)
+      pattern: url
+      variant: inline
+      class: narrow
+    job_title:
+      type: text
+      required: false
+      label: "Job Title:"
+      variant: inline
+      class: narrow
+    department:
+      type: select
+      values: ['Europeana Staff', 'Our Partner']
+    team:
+      type: select
+      required: false
+      label: "Team:"
+      values:
+        "(not set)": "(not set)"
+        "Aggregation": "Data Partner Services"
+        "Corporate Communication": "Communications"
+        "Distribution & Engagement": "End User Services"
+        "Facilitation": "Policy, Research, Knowledge & Programme Management"
+        "Management": "Management"
+        "Network & Sustainability": "Network & Sustainability"
+        "People & Business Support": "People & Business Support"
+        "Product Development": "Product Development"
+        "Technology": "Technology"
+        "Re-use Services": "Re-use Services"
+    introduction:
+      type: html
+      required: false
+      label: "Introduction (120 chars MAX):"
+      pattern: "^.{1,120}$"
+      height: 150px
+    image:
+      type: image
+      required: false
+      label: "Image:"
+      attrib: title
+      extensions: [ gif, jpg, png ]
+    email:
+      type: text
+      required: false
+      label: "Email address:"
+      variant: inline
+      pattern: email
+      class: narrow
+      group: Contact
+    # This is only used if the checkbox is checked on the page - it will override the email address and show the secondary email address instead
+    secondary_email:
+      type: text
+      required: false
+      label: "Secondary email address:"
+      variant: inline
+      pattern: email
+      class: narrow
+    telephone_number:
+      type: text
+      required: false
+      label: "Telephone number:"
+      variant: inline
+      postfix: "<em>Allowed values are numbers, spaces, (, ), + and - </em>"
+      pattern: '^[0-9+ -()]*$'
+      class: narrow
+    other_number:
+      type: text
+      required: false
+      label: "Other number:"
+      variant: inline
+      postfix: "<em>Allowed values are numbers, spaces, (, ), + and - </em>"
+      pattern: '^[0-9+ -]*$'
+      class: narrow
+    linkedin:
+      type: text
+      required: false
+      label: "Linkedin URL:"
+      variant: inline
+      postfix: "<em>URL has to start with http:// or https://</em>"
+      pattern: url
+      class: narrow
+    twitter:
+      type: text
+      required: false
+      label: "Twitter URL:"
+      variant: inline
+      postfix: '<em>For expample "https://twitter.com/Europeanaeu" </em>'
+      pattern: url
+      class: narrow
+    skype:
+      type: text
+      required: false
+      label: "Skype ID:"
+      variant: inline
+      class: narrow
+    other_links_1:
+      type: text
+      required: false
+      label: "Other link:"
+      variant: inline
+      postfix: "<em>URL has to start with http:// or https://</em>"
+      pattern: url
+      class: narrow
+    other_links_2:
+      type: text
+      required: false
+      label: "Other link:"
+      variant: inline
+      postfix: "<em>URL has to start with http:// or https://</em>"
+      pattern: url
+      class: narrow
+    other_links_3:
+      type: text
+      required: false
+      label: "Other link:"
+      variant: inline
+      postfix: "<em>URL has to start with http:// or https://</em>"
+      pattern: url
+      class: narrow
+    contact_blogpost:
+      type: checkbox
+      label: "Main contact of the blog"
+      group: "Main Contact Options"
+    contact_event:
+      type: checkbox
+      label: "Main contact of events"
+    contact_job:
+      type: checkbox
+      label: "Main contact of the jobs page"
+    contact_person:
+      type: checkbox
+      label: "Main contact of the staff page"
+    contact_publication:
+      type: checkbox
+      label: "Main contact of the publications page"
+    contact_pressrelease:
+      type: checkbox
+      label: "Main contact of the press releases page"
+    contact_taskforce:
+      type: checkbox
+      label: "Main contact of the task forces page"
+    contact_tag:
+      type: checkbox
+      label: "Main contact of tag page"
+  taxonomy: [ tags, tree ]
+  sort: team
+  # no pager for person, mabe there is a better solution
+  listing_records: 10000
+  record_template: record_person.twig
+  listing_template : listing_person.twig
+  icon_many: "fa:users"
+  icon_one: "fa:user"
+
 
 
 #################################
@@ -515,7 +722,8 @@ homepage:
       label: "Footer"
       multiple: false
   viewless: true
-
+  icon_many: "fa:home"
+  icon_one: "fa:home"  
 
 
 
