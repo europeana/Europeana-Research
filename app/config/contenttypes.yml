@@ -101,57 +101,57 @@ blogposts:
   # Show on Blog page
   taxonomy: [ tags, tree ]
   relations:
-    persons:
-      label: "Author(s)"
-      multiple: true
-      format: "{{ item.last_name }}, {{ item.first_name }}"
-      order: last_name
-    person:
-      multiple: true
-      label: "Contact(s)"
-      order: last_name
-      format: "{{ item.last_name }}, {{ item.first_name }}"
-      order: last_name
+    # persons:
+    #   label: "Author(s)"
+    #   multiple: true
+    #   format: "{{ item.last_name }}, {{ item.first_name }}"
+    #   order: last_name
+    # person:
+    #   multiple: true
+    #   label: "Contact(s)"
+    #   order: last_name
+    #   format: "{{ item.last_name }}, {{ item.first_name }}"
+    #   order: last_name
     pages:
       multiple: true
       label: "Pages"
       order: -id
       format: "{{ item.title|escape }}"
-    blogposts:
-      multiple: true
-      label: "Blog posts"
-      order: -id
-      format: "{{ item.title|escape }}"
-    publications:
-      multiple: true
-      label: "Publications"
-      order: -id
-      format: "{{ item.title|escape }}"
-    pressreleases:
-      multiple: true
-      label: "Press releases"
-      order: -id
-      format: "{{ item.title|escape }}"
-    projects:
-      multiple: true
-      label: "Projects"
-      order: -id
-      format: "{{ item.title|escape }}"
-    taskforces:
-      multiple: true
-      label: "Task forces"
-      order: -id
-      format: "{{ item.title|escape }}"
-    events:
-      multiple: true
-      label: "Events"
-      order: -id
-      format: "{{ item.title|escape }}"
-    jobs:
-      multiple: true
-      label: "Jobs"
-      order: -id
-      format: "{{ item.title|escape }}"
+    # blogposts:
+    #   multiple: true
+    #   label: "Blog posts"
+    #   order: -id
+    #   format: "{{ item.title|escape }}"
+    # publications:
+    #   multiple: true
+    #   label: "Publications"
+    #   order: -id
+    #   format: "{{ item.title|escape }}"
+    # pressreleases:
+    #   multiple: true
+    #   label: "Press releases"
+    #   order: -id
+    #   format: "{{ item.title|escape }}"
+    # projects:
+    #   multiple: true
+    #   label: "Projects"
+    #   order: -id
+    #   format: "{{ item.title|escape }}"
+    # taskforces:
+    #   multiple: true
+    #   label: "Task forces"
+    #   order: -id
+    #   format: "{{ item.title|escape }}"
+    # events:
+    #   multiple: true
+    #   label: "Events"
+    #   order: -id
+    #   format: "{{ item.title|escape }}"
+    # jobs:
+    #   multiple: true
+    #   label: "Jobs"
+    #   order: -id
+    #   format: "{{ item.title|escape }}"
   record_template: record_blogpost.twig
   recordsperpage: 100
 
@@ -271,11 +271,11 @@ pages:
       group: "Support navigation"
   taxonomy: [ tags, tree ]
   relations:
-    persons:
-      label: "Contact(s)"
-      multiple: true
-      format: "{{ item.last_name }}, {{ item.first_name }}"
-      order: last_name
+    # persons:
+    #   label: "Contact(s)"
+    #   multiple: true
+    #   format: "{{ item.last_name }}, {{ item.first_name }}"
+    #   order: last_name
     pages:
       multiple: true
       label: "Pages"
@@ -286,36 +286,36 @@ pages:
       label: "Blog posts"
       order: -id
       format: "{{ item.title|escape }}"
-    publications:
-      multiple: true
-      label: "Publications"
-      order: -id
-      format: "{{ item.title|escape }}"
-    pressreleases:
-      multiple: true
-      label: "Press releases"
-      order: -id
-      format: "{{ item.title|escape }}"
-    projects:
-      multiple: true
-      label: "Projects"
-      order: -id
-      format: "{{ item.title|escape }}"
-    taskforces:
-      multiple: true
-      label: "Task forces"
-      order: -id
-      format: "{{ item.title|escape }}"
-    events:
-      multiple: true
-      label: "Events"
-      order: -id
-      format: "{{ item.title|escape }}"
-    jobs:
-      multiple: true
-      label: "Jobs"
-      order: -id
-      format: "{{ item.title|escape }}"
+    # publications:
+    #   multiple: true
+    #   label: "Publications"
+    #   order: -id
+    #   format: "{{ item.title|escape }}"
+    # pressreleases:
+    #   multiple: true
+    #   label: "Press releases"
+    #   order: -id
+    #   format: "{{ item.title|escape }}"
+    # projects:
+    #   multiple: true
+    #   label: "Projects"
+    #   order: -id
+    #   format: "{{ item.title|escape }}"
+    # taskforces:
+    #   multiple: true
+    #   label: "Task forces"
+    #   order: -id
+    #   format: "{{ item.title|escape }}"
+    # events:
+    #   multiple: true
+    #   label: "Events"
+    #   order: -id
+    #   format: "{{ item.title|escape }}"
+    # jobs:
+    #   multiple: true
+    #   label: "Jobs"
+    #   order: -id
+    #   format: "{{ item.title|escape }}"
   record_template: record_page.twig
 
 #################################

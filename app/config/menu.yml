@@ -1,13 +1,14 @@
-primary: []
-#   - title: 'Get involved'
-#     path: /get-involved
-#     label: 'Get involved'
-#   - title: 'Provide your data'
-#     path: /share-your-data
-#     label: 'Share your data'
-#   - title: 'Use our data'
-#     path: /use-our-data
-#     label: 'Use our data'
+primary:
+  - title: 'Option 1'
+    path: /get-involved
+    label: 'Option 1'
+  - title: 'Option 2'
+    path: /share-your-data
+    label: 'Option 2'
+  - title: 'Use our data'
+    path: /use-our-data
+    label: 'Option 3'
+
 footer:
   - title: Home
     path: homepage
@@ -21,6 +22,7 @@ footer:
   - title: Sitemap
     path: /sitemap
     label: Sitemap
+
 Explorer-Europeana:
   - title: Search portal
     path: /sitemap
