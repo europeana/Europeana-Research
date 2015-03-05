@@ -1,5 +1,5 @@
 cacheMaxAge: 30
-itemAmount: 1000
+itemAmount: 100
 
 # Set the key, to prevent people from trying to DDOS your server by triggering
 # /bolt/rssaggregate a lot.
@@ -22,7 +22,7 @@ feeds:
         name: "Europeana"
         title: "Europeana"
         url: "http://pro.europeana.eu"
-        feed: "http://europeana.twokings.eu/files/rss/blog-creative-rss-20.xml"            
+        feed: "http://europeana-research.twokings.eu/files/rss/cloud-rss-20_orig.xml"            
     
 
 # ----------------

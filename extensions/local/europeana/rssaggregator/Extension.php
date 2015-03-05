@@ -126,6 +126,7 @@ class Extension extends \Bolt\BaseExtension
             $values = array(
                 'itemid' => $item->getId(),
                 'title' => "" . $item->getTitle(),
+                'slug' => "" . $this->app['slugify']->slugify($item->getTitle()),
                 'raw' => "" . $raw,
                 'body' => "" . $content,
                 // 'source' => "" . $item->getSource(),
@@ -135,6 +136,8 @@ class Extension extends \Bolt\BaseExtension
                 'sitetitle' => $feed['title'],
                 'sitesource' => $feed['url']
             );
+
+
 
             // echo "<img src='".$image['file']."' width='200'>";
 
@@ -147,10 +150,14 @@ class Extension extends \Bolt\BaseExtension
                 echo "[2]";
             }
 
+            $record->setTaxonomy('tree', 'europeana-cloud-blog');
+
             // $record->setTaxonomy('tags', $item->getTags());
             // $record->setTaxonomy('authors', $author);
             $record->setValues($values);
             
+            // dump($record);
+
             $id = $this->app['storage']->saveContent($record);
 
             echo " - " . $values['datecreated'] . " / " . $values['title'];

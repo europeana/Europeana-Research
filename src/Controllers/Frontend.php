@@ -154,7 +154,7 @@ class Frontend
             $content = $app['storage']->getContent($contenttype['slug'], array('id' => $slug, 'returnsingle' => true));
         }
 
-        dump(debug_backtrace());
+        // dump(debug_backtrace());
 
         $this->checkFrontendPermission($app, $content);
 

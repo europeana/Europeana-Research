@@ -1,13 +1,13 @@
 primary:
-  - title: 'Option 1'
-    path: /get-involved
-    label: 'Option 1'
-  - title: 'Option 2'
-    path: /share-your-data
-    label: 'Option 2'
-  - title: 'Use our data'
-    path: /use-our-data
-    label: 'Option 3'
+  - label: 'Our collections'
+    title: 'These are the current collections'
+    path: /collections
+  - label: 'About our data'
+    path: /about-our-data
+    title: 'How the Europeana dataset is aggregated'
+  - label: 'Work with us'
+    path: /work-with-us
+    title: 'How to work with us'
 
 footer:
   - title: Home

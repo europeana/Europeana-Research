@@ -19,6 +19,9 @@ tree:
     behaves_like: grouping
     options:
         pages: 'Pages'
+        collections: 'Our collections'
+        about-our-data: 'About our data'
+        work-with-us: 'Work with us'
 #         slug: 'title'
 #         about-us: 'About us'
 #         activities: 'Activities'

@@ -72,11 +72,13 @@ class Extension extends \Bolt\BaseExtension
         // slug is strucutre
         if ( isset($parents[$slug]) ) {
             $contenttype = 'Structures';
-            return Bolt\Controllers\Frontend::record($this->app , $contenttype, $slug);
+            $frontend = new Bolt\Controllers\Frontend;
+            return $frontend->record($this->app , $contenttype, $slug);
         }
         else {
             $contenttype = self::getContenttypeBySlug($slug);
-            //return Bolt\Controllers\Frontend::record($this->app , $contenttype, $slug);
+            $frontend = new Bolt\Controllers\Frontend;
+            return $frontend->record($this->app , $contenttype, $slug);
         }
     }
 
@@ -90,7 +92,12 @@ class Extension extends \Bolt\BaseExtension
         // Add snippets, since this is a Frontend route.
         $this->app['htmlsnippets'] = true;
         $contenttype = self::getContenttypeBySlug($slug);
-        return Bolt\Controllers\Frontend::record($this->app , $contenttype, $slug);
+
+        $frontend = new Bolt\Controllers\Frontend;
+
+        return $frontend->record($this->app , $contenttype, $slug);
+
+
     }
 
     public function getContenttypeBySlug($slug) {

@@ -615,6 +615,54 @@ persons:
 
 #################################
 #
+# LOCATION
+#
+# Notes:
+# This content type should NOT be crawled,
+# it is used to enter data into the other areas where it is required
+# so the /permalink/locations area should not be in the sitemap, and should be ignored by robots.
+#
+#################################
+locations:
+  name: Locations
+  singular_name: Location
+  fields:
+    # Shown on Job list page, Job page, Events list page, Events page, Home page
+    title:
+      type: text
+      required: true
+      label: "Title (required):"
+      postfix : "(max. 72 characters)"
+      variant: inline
+      pattern: "^.{1,72}$"
+      group: Location
+    slug:
+      type: slug
+      uses: title
+    # Shown on Jobs page, Events page, Home page
+    geolocation:
+      type: geolocation
+      required: true
+      label: "Location (required):"
+    # If checked, then it will make the content type appear in the drop down Location box in the "Job" content type.
+    europeana_place:
+      type: checkbox
+      prefix: "<hr>"
+      required: false
+      label: "This is a Europeana place of work:"
+      group: "Secondary information"
+    # If checked, then this will be the official office address used in the footer
+    europeana_office:
+      type: checkbox
+      required: false
+      label: "This is the main Europeana office (appear in footer):"
+  record_template: record_location.twig
+  icon_many: "fa:map-marker"
+  icon_one: "fa:map-marker"
+
+
+#################################
+#
 # HOMEPAGE
 #
 # Notes:
@@ -745,33 +793,33 @@ footers:
     # footer logo image
     image:
       type: image
-      required: true
+      # required: true
       label: "Image: (required):"
       attrib: title
       extensions: [ gif, jpg, png ]
     socialmedia:
       type: html
-      required: true
+      # required: true
       label: "Social media links (required):"
       height: 300px
     linklist-left:
       type: html
-      required: true
+      # required: true
       label: "Linklist left (required):"
       height: 300px
     linklist-right:
       type: html
-      required: true
+      # required: true
       label: "Linklist right (required):"
       height: 300px
     mission:
       type: html
-      required: true
+      # required: true
       label: "Mission (required):"
       height: 300px
     linklist-other:
       type: html
-      required: true
+      # required: true
       label: "Linklist others (required):"
       height: 300px
   relations:
