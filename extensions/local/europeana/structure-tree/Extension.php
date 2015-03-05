@@ -67,7 +67,7 @@ class Extension extends \Bolt\BaseExtension
         $this->app['htmlsnippets'] = true;
 
         $parents= self::getTreeParents();
-        $slug = \Bolt\Helpers\String::slug($slug, -1);
+        $slug = \Bolt\Helpers\String::makesafe($slug, -1);
 
         // slug is strucutre
         if ( isset($parents[$slug]) ) {
@@ -76,7 +76,7 @@ class Extension extends \Bolt\BaseExtension
         }
         else {
             $contenttype = self::getContenttypeBySlug($slug);
-            return Bolt\Controllers\Frontend::record($this->app , $contenttype, $slug);
+            //return Bolt\Controllers\Frontend::record($this->app , $contenttype, $slug);
         }
     }
 

@@ -83,7 +83,7 @@ class Extension extends \Bolt\BaseExtension
             $record = $this->app['storage']->getContent(
                 $contenttype, array(
 //                    'itemid' => $item->getId(),
-                    'slug' => \Bolt\Helpers\String::slug( $item->getTitle() ),
+                    'slug' => \Bolt\Helpers\String::makeSafe( $item->getTitle() ),
                     'returnsingle' => true, 
                     // 'printquery' => true
                 ) );
