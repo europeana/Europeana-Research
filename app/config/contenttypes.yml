@@ -154,8 +154,9 @@ blogposts:
     #   format: "{{ item.title|escape }}"
   record_template: record_blogpost.twig
   recordsperpage: 100
-  icon_many: "fa:calendar-o"
-  icon_one: "fa:calendar-o"  
+  icon_many: "fa:quote-left"
+  icon_one: "fa:quote-right"
+
 
 
 #################################
@@ -319,8 +320,8 @@ pages:
     #   order: -id
     #   format: "{{ item.title|escape }}"
   record_template: record_page.twig
-  icon_many: "fa:file-text"
-  icon_one: "fa:file-text"    
+  icon_many: "fa:files-o"
+  icon_one: "fa:files"
 
 #################################
 #
@@ -659,6 +660,7 @@ locations:
   record_template: record_location.twig
   icon_many: "fa:map-marker"
   icon_one: "fa:map-marker"
+  show_in_menu: false
 
 
 #################################
@@ -772,6 +774,7 @@ homepage:
   viewless: true
   icon_many: "fa:home"
   icon_one: "fa:home"  
+  show_in_menu: false
 
 
 
@@ -827,3 +830,6 @@ footers:
       label: "Location:"
       multiple: false
   viewless: true
+  icon_many: "fa:tasks"
+  icon_one: "fa:tasks"
+  show_in_menu: false

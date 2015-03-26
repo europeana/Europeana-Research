@@ -43,7 +43,9 @@ sort_options:
     -title: 'Title (Z → A)'
     -date_start: 'Project start (newest first)'
     -date_end: 'Project end (newest first)'
-
+  events:
+    end_event: 'Upcoming events'
+    -end_event: 'Past events'
 
 # set default excerpt length
 excerpt_length: 140
