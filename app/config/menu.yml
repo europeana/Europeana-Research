@@ -1,6 +1,6 @@
 primary:
-  - label: 'Our collections'
-    title: 'These are the current collections'
+  - label: 'Featured collections'
+    title: 'These are featured Europeana collections of interest to the research community'
     path: /collections
   - label: 'About our data'
     path: /about-our-data
