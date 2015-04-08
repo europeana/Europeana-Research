@@ -285,8 +285,8 @@ collections:
       required: true
       label: "Title (required):"
       variant: inline
-      postfix: "(max. 50 characters)"
-      pattern: "^.{1,50}$"
+      postfix: "(max. 100 characters)"
+      pattern: "^.{1,100}$"
       group: Page
     slug:
       type: slug
@@ -310,6 +310,11 @@ collections:
       type: image
       required: false
       label: "Teaser image:"
+      attrib: title
+      extensions: [ gif, jpg, png ]
+    source:
+      type: text
+      source:
     secondary_mail:
       type: checkbox
       label: "Show secondary email instead:"
