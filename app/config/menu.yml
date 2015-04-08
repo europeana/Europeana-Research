@@ -8,20 +8,24 @@ primary:
   - label: 'Work with us'
     path: /work-with-us
     title: 'How to work with us'
+  - label: 'About us'
+    path: /page/about-europeana-research
+    title: 'About Europeana Research'
 
 footer:
   - title: Home
     path: homepage
     label: Home
-  - title: 'About us'
-    path: /about-us
-    label: 'About us'
+
   - title: 'Terms & policies'
     link: http://europeana.eu/portal/rights/terms-and-policies.html
     label: 'Terms & policies'
   - title: Sitemap
     path: /sitemap
     label: Sitemap
+  - label: 'About us'
+    path: /page/about-europeana-research
+    title: 'About Europeana Research'
 
 Explorer-Europeana:
   - title: Search portal

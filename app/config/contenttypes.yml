@@ -1,52 +1,3 @@
-#################################################################
-#
-# Creatd by: Alexander Linn
-#
-# Version: 0.1
-# Creation date: 07.07.2014
-#
-# Modified by: Patrick Tettenborn
-# Modification date:
-#
-# Based upon:
-# ----------
-# Requirements:
-# https://docs.google.com/spreadsheets/d/1e89kisHaEK7tKjbD95VudnTXtekh889ScwQr4-dqCC0/edit#gid=773173311
-#
-# Examples
-# http://demo.deanbirkett.name/ETHZZG/#p=location
-#
-#
-# Issues:
-# - required field function for more type ('select', 'html')
-#
-#
-# ToDos:
-#
-#
-#################################################################
-
-
-
-##################################################################
-#
-# The following contentypes are specified:
-#
-# - LOCATION
-# - STRUCTURE
-# - PAGE
-# - BLOGPOST
-# - JOB
-# - EVENT
-# - PERSON
-# - PUBLICATION
-# - PRESSRELEASE
-# - PROJECTS
-# - TASKFORCES
-# - HOMEPAGE
-# - FOOTER
-#
-#################################################################
 
 #################################
 #
@@ -186,7 +137,7 @@ blogposts:
 #     HTML field; neither is a particularly excellent solution, but the
 #     alternative would be to add yet another contenttype, and a relation - way
 #     too complex.
-#     The field should contain a sequence of list items 
+#     The field should contain a sequence of list items
 # - Should related content be shown on the contenttype (shown in prototype demo.deanbirkett but not in excel docs.google.com)?
 #
 #################################
@@ -323,6 +274,141 @@ pages:
   icon_many: "fa:files-o"
   icon_one: "fa:files"
 
+
+collections:
+  name: Collections
+  singular_name: Collection
+  fields:
+    # Shown on Individual pages, Lists, Overviews, Teasers
+    title:
+      type: text
+      required: true
+      label: "Title (required):"
+      variant: inline
+      postfix: "(max. 50 characters)"
+      pattern: "^.{1,50}$"
+      group: Page
+    slug:
+      type: slug
+      uses: title
+    intro:
+      type: textarea
+      label: "Intro:"
+      height: 150px
+    # Shown on Individual pages, Lists
+    teaser:
+      type: html
+      label: "Teaser (required):"
+      height: 150px
+    # Shown on Individual pages
+    body:
+      type: html
+      label: "Body (required):"
+      height: 300px
+    # Shown on Individual pages, Lists, Overviews, Teasers
+    teaser_image:
+      type: image
+      required: false
+      label: "Teaser image:"
+    secondary_mail:
+      type: checkbox
+      label: "Show secondary email instead:"
+    hide_list:
+      type: checkbox
+      label: "Hide from list views:"
+      postfix: "Check to hide this page from overview."
+    filelist_files:
+      type: filelist
+      label: "Attachments:"
+      group: "Secondary information"
+    filelist_downloads:
+      type: text
+      class: narrow
+      label: "Document folder:"
+      postfix: "Add the name of the folder to show as a 'File browser' listing, relative to the base 'files/' folder. If left blank, no file-browser will be shown."
+    # show_page:
+    #  type: checkbox
+    #  required: false
+    #  label: "This page should be shown on the site, and is not an internal page:"
+    # These links & titles will show in the right bar if populated - external links should have the external link icon
+    # appended, documents on the DMS should have another visual representation present.
+    hide_related:
+      type: checkbox
+      label: "Hide from related content:"
+      postfix: "Check to hide this page from related content sections."
+    hide_related_section:
+      type: checkbox
+      label: "Hide related content section:"
+      postfix: "Check to hide the related content section."
+    listtitle:
+      type: text
+      default: "Thumbnail/image grid view"
+      required: false
+      variant: inline
+      prefix: "<hr><h2>Image Grid</h2>"
+    imagelist:
+      type: imagelist
+      label: "Grid images for subsites:"
+    liststyle:
+      type: select
+      label: "Style modifier"
+      values: ['default', 'fivecols']
+    support_navigation:
+      type: markdown
+      label: "Support navigation:"
+      group: "Support navigation"
+  taxonomy: [ tags, tree ]
+  relations:
+    persons:
+      label: "Contact(s)"
+      multiple: true
+      format: "{{ item.last_name }}, {{ item.first_name }}"
+      order: last_name
+    pages:
+      multiple: true
+      label: "Pages"
+      order: -id
+      format: "{{ item.title|escape }}"
+    blogposts:
+      multiple: true
+      label: "Blog posts"
+      order: -id
+      format: "{{ item.title|escape }}"
+    # publications:
+    #   multiple: true
+    #   label: "Publications"
+    #   order: -id
+    #   format: "{{ item.title|escape }}"
+    # pressreleases:
+    #   multiple: true
+    #   label: "Press releases"
+    #   order: -id
+    #   format: "{{ item.title|escape }}"
+    # projects:
+    #   multiple: true
+    #   label: "Projects"
+    #   order: -id
+    #   format: "{{ item.title|escape }}"
+    # taskforces:
+    #   multiple: true
+    #   label: "Task forces"
+    #   order: -id
+    #   format: "{{ item.title|escape }}"
+    # events:
+    #   multiple: true
+    #   label: "Events"
+    #   order: -id
+    #   format: "{{ item.title|escape }}"
+    # jobs:
+    #   multiple: true
+    #   label: "Jobs"
+    #   order: -id
+    #   format: "{{ item.title|escape }}"
+  record_template: record_page.twig
+  icon_many: "fa:share-alt"
+  icon_one: "fa:share-alt"
+
+
 #################################
 #
 # STRUCTURE
@@ -409,10 +495,10 @@ structures:
   record_template: overview_structure.twig
   recordsperpage: 1000
   icon_many: "fa:puzzle-piece"
-  icon_one: "fa:puzzle-piece"      
+  icon_one: "fa:puzzle-piece"
   # viewless: true
 
- 
+
 
 
 #################################
@@ -435,7 +521,7 @@ persons:
       label: "First name"
       variant: inline
       class: narrow
-      postfix: "<em><small>(required)</small></em>"      
+      postfix: "<em><small>(required)</small></em>"
       group: "Personal details"
     # Show on Staff list page, Staff page, Events page (speakers), Contact info block
     last_name:
@@ -773,7 +859,7 @@ homepage:
       multiple: false
   viewless: true
   icon_many: "fa:home"
-  icon_one: "fa:home"  
+  icon_one: "fa:home"
   show_in_menu: false
 
 
