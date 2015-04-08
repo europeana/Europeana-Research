@@ -1,8 +1,9 @@
 {
     "require": {
         "bolt/disqus": "v1.2",
-        "europeana/filebrowser": "dev-master",
         "bolt/rssfeed": "v2.0.1",
+        "bolt/sitemap": "~1.0",
+        "europeana/filebrowser": "dev-master",
         "foundrycode/boltredirector": "1.0.1"
     },
     "repositories": {
@@ -15,7 +16,7 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "provide": {
-        "bolt/bolt": "2.0.5"
+        "bolt/bolt": "2.1.5"
     },
     "scripts": {
         "post-package-install": "Bolt\\Composer\\ExtensionInstaller::handle",
@@ -25,9 +26,9 @@
         "bolt-web-path": ".././"
     },
     "autoload": {
-        "files": [
-            "installer.php"
-        ]
+        "psr-4": {
+            "Bolt\\Composer\\": ""
+        }
     },
     "config": {
         "discard-changes": true,

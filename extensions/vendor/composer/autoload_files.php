@@ -10,5 +10,5 @@ return array(
     $vendorDir . '/europeana/filebrowser/init.php',
     $vendorDir . '/bolt/rssfeed/init.php',
     $vendorDir . '/foundrycode/boltredirector/init.php',
-    $baseDir . '/installer.php',
+    $vendorDir . '/bolt/sitemap/init.php',
 );
