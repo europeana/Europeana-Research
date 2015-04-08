@@ -39,7 +39,6 @@ return array(
     'RandomLib' => array($vendorDir . '/ircmaxell/random-lib/lib'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log'),
     'Pimple' => array($vendorDir . '/pimple/pimple/lib'),
-    'PicoFeed' => array($vendorDir . '/fguillot/picofeed/lib'),
     'ParsedownExtra' => array($vendorDir . '/erusev/parsedown-extra'),
     'Parsedown' => array($vendorDir . '/erusev/parsedown'),
     'Maid\\' => array($vendorDir . '/tdammers/htmlmaid/src'),

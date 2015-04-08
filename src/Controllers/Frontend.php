@@ -25,29 +25,6 @@ use utilphp\util;
 class Frontend
 {
     /**
-     * Perform contenttype-based permission check, aborting with a 403
-     * Forbidden as appropriate.
-     *
-     * @param \Silex\Application $app     The application/container
-     * @param Content|string     $content The content to check
-     */
-    protected function checkFrontendPermission(Silex\Application $app, $content)
-    {
-        if ($app['config']->get('general/frontend_permission_checks')) {
-            if ($content instanceof Content) {
-                $contenttypeslug = $content->contenttype['slug'];
-                $contentid = $content['id'];
-            } else {
-                $contenttypeslug = (string) $content;
-                $contentid = null;
-            }
-            if (!$app['users']->isAllowed('frontend', $contenttypeslug, $contentid)) {
-                $app->abort(403, 'Not allowed.');
-            }
-        }
-    }
-
-    /**
      * The default before filter for the controllers in this file.
      *
      * Refer to the routing.yml config file for overridding.
@@ -114,10 +91,6 @@ class Frontend
             $app['twig']->addGlobal($content->contenttype['singular_slug'], $content);
         }
 
-        if (!empty($record)) {
-            $this->checkFrontendPermission($app, $record);
-        }
-
         return $this->render($app, $template, 'homepage');
     }
 
@@ -147,23 +120,19 @@ class Frontend
         $slug = $app['slugify']->slugify($slug);
 
         // First, try to get it by slug.
-        $content = $app['storage']->getContent($contenttype['slug'], array('slug' => $slug, 'returnsingle' => true));
+        $content = $app['storage']->getContent($contenttype['slug'], array('slug' => $slug, 'returnsingle' => true, 'log_not_found' => !is_numeric($slug)));
 
         if (!$content && is_numeric($slug)) {
             // And otherwise try getting it by ID
             $content = $app['storage']->getContent($contenttype['slug'], array('id' => $slug, 'returnsingle' => true));
         }
 
-        // dump(debug_backtrace());
-
-        $this->checkFrontendPermission($app, $content);
-
         // No content, no page!
         if (!$content) {
             // There's one special edge-case we check for: if the request is for the backend, without trailing
             // slash and it is intercepted by custom routing, we forward the client to that location.
             if ($slug == trim($app['config']->get('general/branding/path'), '/')) {
-                Lib::simpleredirect($app['config']->get('general/branding/path') . '/');
+                return Lib::redirect('dashboard');
             }
             $app->abort(404, "Page $contenttypeslug/$slug not found.");
         }
@@ -171,25 +140,17 @@ class Frontend
         // Then, select which template to use, based on our 'cascading templates rules'
         $template = $app['templatechooser']->record($content);
 
-        // Fallback: If file is not OK, show an error page
-        $filename = $app['paths']['templatespath'] . "/" . $template;
-        if (!file_exists($filename) || !is_readable($filename)) {
-            $error = sprintf(
-                "No template for '%s' defined. Tried to use '%s/%s'.",
-                $content->getTitle(),
-                basename($app['config']->get('general/theme')),
-                $template
-            );
+        $paths = $app['resources']->getPaths();
 
-            // Set/log errors and abort
-            $this->setTemplateError($app, $error);
-            $app['logger.system']->error($error, array('event' => 'template'));
-            $app->abort(404, $error);
+        // Setting the canonical URL.
+        if ($content->isHome() && ($template == $app['config']->get('general/homepage_template'))) {
+            $app['resources']->setUrl('canonicalurl', $paths['rooturl']);
+        } else {
+            $url = $paths['canonical'] . $content->link();
+            $app['resources']->setUrl('canonicalurl', $url);
         }
 
-        // Setting the canonical path and the editlink.
-        $app['canonicalpath'] = $content->link();
-        $app['paths'] = $app['resources']->getPaths();
+        // Setting the editlink
         $app['editlink'] = Lib::path('editcontent', array('contenttypeslug' => $contenttype['slug'], 'id' => $content->id));
         $app['edittitle'] = $content->getTitle();
 
@@ -219,26 +180,8 @@ class Frontend
         $content = $app['storage']->getContentObject($contenttypeslug);
         $content->setFromPost($request->request->all(), $contenttype);
 
-        $this->checkFrontendPermission($app, $content);
-
         // Then, select which template to use, based on our 'cascading templates rules'
         $template = $app['templatechooser']->record($content);
-
-        // Fallback: If file is not OK, show an error page
-        $filename = $app['paths']['templatespath'] . "/" . $template;
-        if (!file_exists($filename) || !is_readable($filename)) {
-            $error = sprintf(
-                "No template for '%s' defined. Tried to use '%s/%s'.",
-                $content->getTitle(),
-                basename($app['config']->get('general/theme')),
-                $template
-            );
-
-            // Set/log errors and abort
-            $this->setTemplateError($app, $error);
-            $app['logger.system']->error($error, array('event' => 'template'));
-            $app->abort(404, $error);
-        }
 
         // Make sure we can also access it as {{ page.title }} for pages, etc. We set these in the global scope,
         // So that they're also available in menu's and templates rendered by extensions.
@@ -285,25 +228,8 @@ class Frontend
         $amount = (!empty($contenttype['listing_records']) ? $contenttype['listing_records'] : $app['config']->get('general/listing_records'));
         $order = (!empty($contenttype['sort']) ? $contenttype['sort'] : $app['config']->get('general/listing_sort'));
         $content = $app['storage']->getContent($contenttype['slug'], array('limit' => $amount, 'order' => $order, 'page' => $page, 'paging' => true));
-        $this->checkFrontendPermission($app, $contenttype['slug']);
 
         $template = $app['templatechooser']->listing($contenttype);
-
-        // Fallback: If file is not OK, show an error page
-        $filename = $app['paths']['templatespath'] . "/" . $template;
-        if (!file_exists($filename) || !is_readable($filename)) {
-            $error = sprintf(
-                "No template for '%s'-listing defined. Tried to use '%s/%s'.",
-                $contenttypeslug,
-                basename($app['config']->get('general/theme')),
-                $template
-            );
-
-            // Set/log errors and abort
-            $this->setTemplateError($app, $error);
-            $app['logger.system']->error($error, array('event' => 'template'));
-            $app->abort(404, $error);
-        }
 
         // Make sure we can also access it as {{ pages }} for pages, etc. We set these in the global scope,
         // So that they're also available in menu's and templates rendered by extensions.
@@ -349,23 +275,6 @@ class Frontend
         }
 
         $template = $app['templatechooser']->taxonomy($taxonomyslug);
-
-        // Fallback: If file is not OK, show an error page
-        $filename = $app['resources']->getPath('templatespath') . '/' . $template;
-
-        if (!file_exists($filename) || !is_readable($filename)) {
-            $error = sprintf(
-                "No template for '%s'-listing defined. Tried to use '%s/%s'.",
-                $taxonomyslug,
-                basename($app['config']->get('general/theme')),
-                $template
-            );
-
-            // Set/log errors and abort
-            $this->setTemplateError($app, $error);
-            $app['logger.system']->error($error, array('event' => 'template'));
-            $app->abort(404, $error);
-        }
 
         $name = $slug;
         // Look in taxonomies in 'content', to get a display value for '$slug', perhaps.
@@ -501,16 +410,19 @@ class Frontend
             return $app['twig']->render($template);
         } catch (\Twig_Error_Loader $e) {
             $error = sprintf(
-                "No template for '%s' defined. Tried to use '%s/%s'.",
+                'Rendering %s failed: %s',
                 $title,
-                basename($app['config']->get('general/theme')),
-                $template
+                $e->getMessage()
             );
 
+            // Log it
             $app['logger.system']->error($error, array('event' => 'twig'));
 
+            // Set the template error
+            $this->setTemplateError($app, $error);
+
             // Abort ship
-            $app->abort(404, $error);
+            $app->abort(Response::HTTP_INTERNAL_SERVER_ERROR, $error);
         }
     }
 
