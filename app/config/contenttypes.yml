@@ -68,6 +68,11 @@ blogposts:
       label: "Pages"
       order: -id
       format: "{{ item.title|escape }}"
+    collections:
+      multiple: true
+      label: "Collections"
+      order: -id
+      format: "{{ item.title|escape }}"
     # blogposts:
     #   multiple: true
     #   label: "Blog posts"
@@ -238,6 +243,11 @@ pages:
     blogposts:
       multiple: true
       label: "Blog posts"
+      order: -id
+      format: "{{ item.title|escape }}"
+    collections:
+      multiple: true
+      label: "Collections"
       order: -id
       format: "{{ item.title|escape }}"
     # publications:
