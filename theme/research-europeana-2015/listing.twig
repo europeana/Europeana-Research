@@ -90,8 +90,8 @@
                         Just grab the blog-postings again on this page.. #}
                     {% if showsortby and taxonomy is not defined and contenttype.slug in ['blogposts','collections'] %}
                        
-                        {# all blog posts. #}
-                        {% setcontent records = 'BlogPosts' where { limit : amount, order : order, page : page } allowpaging %}
+                        {# all blog posts or collections. #}
+                        {% setcontent records = contenttype.slug where { limit : amount, order : order, page : page } allowpaging %}
 
                     {% endif %}
 
