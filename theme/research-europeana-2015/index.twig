@@ -17,6 +17,98 @@
         </div>
     </div>
 
+<div class="section home-collections">
+    <div class="lc">
+
+    <h2 class="section-title">Collections</h2>
+
+    <div class="grid cf">
+
+        <div class="l-collections">
+            <div class="grid">
+
+            {% setcontent collections = "collections" %} 
+                
+            {% for collection in collections -%}   
+            <div class="l-post">
+                <div class="block block-inset">
+                    <a href="#" class="inner">
+                        <div class="b-thumb">
+                            <img src="{{ collection.image|thumbnail(685,470,"c") }}" alt="{{ collection.image|title }}" />
+                            <div class="b-text">
+                                <h2 class="headline">{{ collection.title }}</h2>
+                            </div>
+                        </div>
+                    </a>
+                    {% if collection.source is not empty %}
+                    <div class="excerpt">
+                        Provided by: <a href="{{ collection.source_url }}" class="external">{{ collection.source }}</a>
+                    </div>
+                {% endif %}
+                </div>
+            </div>
+            {%- endfor %}
+            
+            </div>
+
+            <a class="link-more" href="/collections">See all Collections</a>
+        </div>
+
+    </div>
+    </div>
+</div>
+
+
+<div class="section home-news">
+    <div class="lc">
+
+    <h2 class="section-title">What's New</h2>
+
+    <div class="l-news">
+        {% setcontent records = "blogposts/latest/1" %}
+        
+        {% for record in records -%}
+        <div class="block block-thumb">
+            <div class="b-thumb">
+                <a href="{{record.link}}"><img src="{{ record.image|thumbnail(685,470,"c") }}" alt="{{ record.image|title }}" /></a>
+            </div>
+            <div class="b-text">
+
+                <h2 class="headline"><a href="{{ record.link }}">{{ record.title }}</a> </h2>
+
+                {{ record.body|excerpt(400)}}
+
+                <div class="item-meta-primary">
+                    {# set author #}
+                    {% include 'items/_item-author.twig' %}
+                    {% include 'items/_item-readtime.twig' %}
+                </div>
+
+                <div class="item-meta-secondary">
+                    {# set date #}
+                    {% include 'items/_item-date.twig' %}
+                    {# set tags #}
+                    {% include 'items/_item-tags.twig' %}
+                    {# set discus comments #}
+                    {% include 'items/_item-comments-link.twig' %}
+                </div>
+
+                
+
+            </div>
+        </div>
+        {%- endfor %}
+
+    </div>
+
+    <a class="link-more" href="/blogposts">More from the Research Blog</a>
+        
+    </div>
+</div>
+
+
+{# BIS HERE #} 
+
 {# -- "pro-info section" commented out for 'research' -- 
 
     <div class="pro-info section">
@@ -62,81 +154,6 @@
     </div>
     --------- #}
 
-    <div class="section home-news">
-        <div class="lc">
-
-        {{ home.callout_6|raw  }}
-
-        <div class="grid cf">
-
-            <div class="l-news">
-                <div class="grid">
-
-                    {#
-                        START - related/latest blogposts.
-                        if related blogposts are not defined, latest blogposts were used
-                        by only one related blogpost, use one latest blogpost
-                    #}
-
-                    {# get related blogposts #}
-                    {% set blogposts = [] %}
-                    {% set relatedBlogposts = home.related('blogposts')|slice(0,3) %}
-
-                    {# if no related post, get latest posts#}
-                    {% if relatedBlogposts|length == 0  %}
-                        {% setcontent relatedBlogposts = "blogposts/latest/3" %}
-                    {# if less than 3 related post, merge related with latest posts #}
-                    {% elseif relatedBlogposts|length < 3 %}
-                        {% set postQuery = '' %}
-                        {% for post in relatedBlogposts %}
-                            {% set postQuery = postQuery ~ '!' ~ post.id %}
-                            {% if not loop.last %}
-                                {% set postQuery = postQuery ~ ' && ' %}
-                            {% endif %}
-                        {% endfor %}
-
-                        {% setcontent latestBlogposts = "blogposts/latest/" ~ (3-relatedBlogposts|length) where {id: postQuery } %}
-                        {% set relatedBlogposts = relatedBlogposts|merge(latestBlogposts ) %}
-                    {% endif %}
-
-                    {# render blogposts #}
-                    {% for post in relatedBlogposts %}<div class="l-post"><!--
-                     --><div class="block block-inset">
-                            <a href="{{ structurelink(post) }}" class="inner" title="{{ post.title }}">
-                                <div class="b-thumb">
-                                    {% if post.image|length %}
-                                        <img src="{{ post.image|thumbnail(400,300,"c") }}" alt="{{ post.image|title }}" />
-                                    {% endif %}
-                                    <div class="b-text">
-                                        <h2 class="headline">{{ post.title }}</h2>
-                                    </div>
-                                </div>
-                                <div class="excerpt">
-                                    <p>{{ post.excerpt(app.config.get('general/excerpt_length')) }}</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div><!-- 
-                 -->{% endfor %}
-
-                    {# END - related/latest blogposts #}
-
-                </div>
-
-                <a class="link-more" href="{{ paths.root }}blogposts">More collections</a>
-            </div><!-- <div class="l-newsfeed">
-
-                {# set twitter feed - disabled #}
-                {#
-                <div class="tweets">
-                    {{ twitterfeed() }}
-                </div>
-                #}
-            </div> -->
-
-        </div>
-        </div>
-    </div>
 
 
     {# get the nearest two EVENTS #}

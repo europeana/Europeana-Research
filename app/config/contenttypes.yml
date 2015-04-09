@@ -324,7 +324,15 @@ collections:
       extensions: [ gif, jpg, png ]
     source:
       type: text
-      source:
+      variant: inline
+      class: narrow
+    source_url:
+      type: text
+      required: false
+      label: "URL from source:"
+      variant: inline
+      postfix: "<em>URL has to start with http:// or https://</em>"
+      pattern: url
     secondary_mail:
       type: checkbox
       label: "Show secondary email instead:"
