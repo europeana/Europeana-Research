@@ -16,7 +16,7 @@
                 {% if ( record is defined and record.title != "") %}
                     <h1 class="title">{{ record.title }}</h1>
                 {% else %}
-                    <h1 class="title">Who works at Europeana</h1>
+                    <h1 class="title">Europeana research team</h1>
                 {% endif %}
 
                 {% set currentTeam = 'empty' %}
@@ -29,7 +29,7 @@
                         {% set currentTeam = records|first.team %}
                         <div class="team">
                             <h2>{{ teams[record.team]|default(record.team) }}</h2>
-                            <ul class="results-list"><!-- 
+                            <ul class="results-list"><!--
                                 -->{% for person in records if record.team == person.team  %}<!--
                                 --><li>{% include 'items/_item-person-list.twig' with { record: person} %}</li><!--
                             -->{% endfor %}<!--
@@ -38,7 +38,7 @@
                         {% set currentTeam = record.team %}
                     {% endif %}
                 {% endfor %}
-                
+
 {# If person does not work at europeana, he or she is a prtner #}
                 {% for record in records if record.team == "(not set)" %}
                     {% if ( record.company != currentCompany ) %}
@@ -51,7 +51,7 @@
                                <!--
                                 --><li>{% include 'items/_item-person-list.twig' with { record: person} %}</li><!--
                             -->{% endfor %}<!--
-                    
+
                         --></ul>
                         </div>
                         {% set currentCompany = record.company %}
