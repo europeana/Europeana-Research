@@ -578,25 +578,27 @@ persons:
       label: "Job Title:"
       variant: inline
       class: narrow
-    department:
-      type: select
-      values: ['Europeana Staff', 'Our Partner']
+    # department:
+    #   type: select
+    #   values: ['Europeana Staff', 'Our Partner']
     team:
       type: select
       required: false
       label: "Team:"
       values:
         "(not set)": "(not set)"
-        "Aggregation": "Data Partner Services"
-        "Corporate Communication": "Communications"
-        "Distribution & Engagement": "End User Services"
-        "Facilitation": "Policy, Research, Knowledge & Programme Management"
         "Management": "Management"
-        "Network & Sustainability": "Network & Sustainability"
-        "People & Business Support": "People & Business Support"
-        "Product Development": "Product Development"
-        "Technology": "Technology"
-        "Re-use Services": "Re-use Services"
+        "Editors_Contributors": "Editors & Contributors"
+        # "Aggregation": "Data Partner Services"
+        # "Corporate Communication": "Communications"
+        # "Distribution & Engagement": "End User Services"
+        # "Facilitation": "Policy, Research, Knowledge & Programme Management"
+        # "Management": "Management"
+        # "Network & Sustainability": "Network & Sustainability"
+        # "People & Business Support": "People & Business Support"
+        # "Product Development": "Product Development"
+        # "Technology": "Technology"
+        # "Re-use Services": "Re-use Services"
     introduction:
       type: html
       required: false
