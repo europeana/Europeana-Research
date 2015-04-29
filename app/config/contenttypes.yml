@@ -397,6 +397,11 @@ collections:
       label: "Blog posts"
       order: -id
       format: "{{ item.title|escape }}"
+    collections:
+      multiple: true
+      label: "Collections"
+      order: -id
+      format: "{{ item.title|escape }}"
     # publications:
     #   multiple: true
     #   label: "Publications"
