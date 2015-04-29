@@ -714,6 +714,9 @@ persons:
     contact_tag:
       type: checkbox
       label: "Main contact of tag page"
+    contact_collection:
+      type: checkbox
+      label: "Main contact of collections page"
   taxonomy: [ tags, tree ]
   sort: team
   # no pager for person, mabe there is a better solution

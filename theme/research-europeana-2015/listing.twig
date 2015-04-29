@@ -61,9 +61,8 @@
                     {% include 'items/_item-sortby.twig' %}
                 {% endif %}
             </div>
-
-        <div class="maincontent">
-
+            
+            <div class="maincontent">
                 {% if (contenttype.slug in ['blogposts', 'events', 'publications', 'pressreleases']) %}
                 <div class="item-rss">
                     <a href="/{{contenttype.slug}}/rss/feed.xml">
