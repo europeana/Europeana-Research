@@ -37,7 +37,7 @@
 
                                 <div class="job-department">
                                     {% if record.team != '(not set)' %}
-                                        {{record.team}}
+                                        {{record.team|replace({'_':' & '}) }} {# No better way to retrieve the correct name - AW 29-4-15 #}
                                     {% else %}
                                         {{ record.company }}
                                     {% endif %}
