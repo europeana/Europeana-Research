@@ -57,12 +57,12 @@ blogposts:
       multiple: true
       format: "{{ item.last_name }}, {{ item.first_name }}"
       order: last_name
-    # person:
-    #   multiple: true
-    #   label: "Contact(s)"
-    #   order: last_name
-    #   format: "{{ item.last_name }}, {{ item.first_name }}"
-    #   order: last_name
+    person:
+      multiple: true
+      label: "Contact(s)"
+      order: last_name
+      format: "{{ item.last_name }}, {{ item.first_name }}"
+      order: last_name
     pages:
       multiple: true
       label: "Pages"
