@@ -202,10 +202,11 @@ class Extension extends \Bolt\BaseExtension
         // link of default structure for contenttype
         else if ($parentContent) {
             $link = $parentContent['path'] . $record['slug'];
+        else if ($record != false ) {
+            $link = $record->link();
+        } else {
+            $link = "";
         }
-        // default link
-        else $link = $record->link();
-
         return $link;
     }
 
