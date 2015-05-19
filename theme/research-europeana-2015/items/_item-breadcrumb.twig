@@ -24,7 +24,7 @@
             VS.
             http://localhost/Europeana-Professional/use-our-data/task-force-home/task-force-no78/
         #}
-        {% if ((record.contenttype.name == 'Structures' or record.group.slug is defined) and record.contenttype.name not in [ 'Events', 'Publications' ] ) %}
+        {% if ((record.contenttype.name == 'Structures' or record.group.slug is defined) and record.contenttype.name not in [ 'Events', 'Publications', 'Collections' ] ) %}
             {% set breadcrumbs = breadcrumb(record) %}
             {% for bc in breadcrumbs %}
                 {% if bc.title %}
