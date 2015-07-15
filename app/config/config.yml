@@ -60,7 +60,7 @@ our_sites:
     link: http://europeana.eu/
   middle:
     title: Network
-    subtitle: Pro
+    subtitle: Professional
     description: For Culture Professionals
     link: http://pro.europeana.eu/
   right:
@@ -68,7 +68,11 @@ our_sites:
     subtitle: Labs
     description: A playground for remixing cultural content
     link: http://labs.europeana.eu/
-
+  right2:
+    title: Connect
+    subtitle: Research
+    description: Connecting to the academic community
+    link: http://research.europeana.eu/
 
 # Set maintenance mode true or false
 # While in maintenance mode, only users of level editor or higher can access the site.
