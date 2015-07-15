@@ -59,6 +59,8 @@ class Extension extends \Bolt\BaseExtension
         // build request url
         $url = "http://www.google.com/cse?cx=".$this->cx."&client=".$this->client."&output=".$this->output."&q=".$q."&hl=en&start=".$start."&num=".$num."&sort=".$sort;
 
+        // echo $url;
+
         // curl setup
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL,$url);
@@ -102,10 +104,10 @@ class Extension extends \Bolt\BaseExtension
                     $this->filterOptions[$key]['checked'] = '';
                     $filterOptions .= $filter['filter'];
                 }
-                else $activeFilter[] = $filter['name']; 
+                else $activeFilter[] = $filter['name'];
            }
         }
-        else $activeFilter[] = 'filter=on'; 
+        else $activeFilter[] = 'filter=on';
 
 
         //  add search filter to query
@@ -187,7 +189,7 @@ class Extension extends \Bolt\BaseExtension
         $this->app['twig']->addGlobal('pager', $pager);
         $this->app['twig']->addGlobal('sort', $sort);
         $this->app['twig']->addGlobal('activeFilter', $activeFilter);
-        
+
 
         $body = $this->app['render']->render($this->template);
 
