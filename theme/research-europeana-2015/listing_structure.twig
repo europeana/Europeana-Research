@@ -37,12 +37,10 @@
 
 {# listing for stucture with fixed content  #}
 {% if (record.content != '' and record.content != 'default' )  %}
-
     {% setcontent records = record.content where { limit : amount, order : order, page : page } allowpaging %}
 
 {# listing for mixed content (structure + contenttype) #}
 {% elseif contenttype %}
-
     {#
         because of the mixed content, we have to sort the list manually.
         1. get all structure and contenttype content by tree
@@ -75,10 +73,11 @@
     ---- #}
 
 {# listing for structure content #}
+{% elseif app.request.get('slug')in ['staff', 'staff/'] %}
+    {% set records = sortRecords(getTreeChildren(record), ['structure_sortorder', 'slug']) %}
 {% else %}
     {% setcontent records = 'Structures' where { tree : record.slug } %}
 {% endif %}
-
 
 {# include contenttype list template #}
 {% if records is defined %}
@@ -86,7 +85,7 @@
     {# for contenttype "Person" include listing_person #}
     {% if (records|length and records|first.contenttype.name == 'Persons') %}
 
-        {% if app.request.get('slug')=='partners/' %}
+        {% if app.request.get('slug') in ['partners', 'partners/'] %}
             {% set records = records|order('company') %}
         {% else %}
             {% set records = records|order('-team', 'first_name') %}

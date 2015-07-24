@@ -49,8 +49,17 @@ blogposts:
       required: false
       label: "Attachments:"
       group: "Secondary information"
+    structure_parent:
+       type: select
+       values: structures/id,title
+       autocomplete: true
+       label: "Select structure tree parent"
+       group: Structure
+    structure_sortorder:
+      type: integer
+      label: "Sort order in structure tree parent"
   # Show on Blog page
-  taxonomy: [ tags, tree ]
+  taxonomy: [ tags ]
   relations:
     persons:
       label: "Author(s)"
@@ -228,7 +237,16 @@ pages:
       type: markdown
       label: "Support navigation:"
       group: "Support navigation"
-  taxonomy: [ tags, tree ]
+    structure_parent:
+       type: select
+       values: structures/id,title
+       autocomplete: true
+       label: "Select structure tree parent"
+       group: Structure
+    structure_sortorder:
+      type: integer
+      label: "Sort order in structure tree parent"
+  taxonomy: [ tags ]
   relations:
     persons:
       label: "Contact(s)"
@@ -380,7 +398,16 @@ collections:
       type: markdown
       label: "Support navigation:"
       group: "Support navigation"
-  taxonomy: [ tags, tree ]
+    structure_parent:
+       type: select
+       values: structures/id,title
+       autocomplete: true
+       label: "Select structure tree parent"
+       group: Structure
+    structure_sortorder:
+      type: integer
+      label: "Sort order in structure tree parent"
+  taxonomy: [ tags ]
   relations:
     persons:
       label: "Contact(s)"
@@ -514,7 +541,16 @@ structures:
       required: false
       label: "Project end:"
       variant: inline
-  taxonomy: [ tags, tree ]
+    structure_parent:
+       type: select
+       values: structures/id,title
+       autocomplete: true
+       label: "Select structure tree parent"
+       group: Structure
+    structure_sortorder:
+      type: integer
+      label: "Sort order in structure tree parent"
+  taxonomy: [ tags ]
   relations:
     persons:
       label: "Contact(s)"
@@ -722,7 +758,16 @@ persons:
     contact_collection:
       type: checkbox
       label: "Main contact of collections page"
-  taxonomy: [ tags, tree ]
+    structure_parent:
+       type: select
+       values: structures/id,title
+       autocomplete: true
+       label: "Select structure tree parent"
+       group: Structure
+    structure_sortorder:
+      type: integer
+      label: "Sort order in structure tree parent"
+  taxonomy: [ tags ]
   sort: team
   # no pager for person, mabe there is a better solution
   listing_records: 10000
