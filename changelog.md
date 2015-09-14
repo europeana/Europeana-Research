@@ -1,14 +1,57 @@
 Bolt 2.2.next
 -------------
 
-Nothing yet.
+Not yet released. Notable changes:
+
+-
+
+
+Bolt 2.2.10
+-----------
+
+Released 2015-09-01. Notable changes:
+
+- Updated: Updated Doctrine and it's components to the latest version. (version 2.5.1, see [here for details](http://www.doctrine-project.org/2015/08/31/doctrine_orm_2_5_1_and_2_4_8_released.html))
+
+Bolt 2.2.9
+----------
+
+Released 2015-08-30. Notable changes:
+
+- Added: Add a button for `<hr>` / horizontal ruler in CKeditor for (see #3539)
+- Fixed: Don't allow extension tables that do not use the configured prefix (see #3968)
+- Fixed: Don't attempt to log array elements that aren't set. (see #3969)
+- Chaned: Provide UI feedback on extension site timeouts. (see #3972)
+- Updated: CKeditor updated to version 4.5.2
+- Updated: Symfony updated to 2.6.11
+- Updated: Silex updated to 1.3.1
+- Updated: Font Awesome to 4.4
+- Fixed: Fix path to Nut for Composer installs (See #3959)
+- Tests: Allow getStatementMock() to be passed a desired return value (See #3957)
+- Fixed: Move initMailCheck() call to a before() handler (See #3953)
+- Fixed: Allow edit permission to be assigned to the owner role. Fixes "Unable to edit entry with
+  owner permission". (See #3938)
+- Updated: Database integrity checker. Add foreign key checks to IntegrityChecker (See #3872)
+
+Bolt 2.2.8
+----------
+
+Released 2015-07-31. Notable changes:
+
+- Fixed: Ensure grouped taxonomies aren't wiped from listing pages when toggling the publication status. (see #3910)
+- Fixed: Timed entries will no longer switch to 'unpublished' after update to 2.2.7 (see #3899)
+- Fixed: "Notice: Array to string conversion in /..../src/Storage.php on line 1071" (See #3893)
+- Fixed: Avoid a missing array key from displaying a warning (Thanks Fabschurt)
+- Updated: `squizlabs/php_codesniffer` requirement to `~2.0` due to upstream changes.
+- Fixed: Send storage event in publishTimedRecords (see #3879)
+- Fixed: Memory leak / loop in "new content" (see #3883)
 
 Bolt 2.2.5
 ----------
 
 Released 2015-07-24. Notable changes:
 
- - Performance: Don't request users if we don't have too, and streamline `isAllowed()` functionality. (#3847)
+ - Performance: Don't request users if we don't have to, and streamline `isAllowed()` functionality. (#3847)
  - Fixed / security: If a user is not root, do not allow them to change the file extension on rename in UI. (Thanks to Tim Coen of Curesec GmbH for bringing this issue to our attention. See #3815)
  - Fixed: Layout issue in Chrome 44. Pretty sure it's a weird bug in Chrome. (#3856)
  - Changed: Update JS Markdown Options to match Parsedown for consistency. (#3820)
@@ -28,7 +71,7 @@ Released 2015-06-25. Notable changes:
 
  - Fixed: Logic preventing building of local extension autoloader (Thanks timcooper, see #3699)
  - Fixed: Clipboard paste issue with fileuploader (Thanks timcooper, see #3702)
- - Added: Now possibile to use the search feature for spcific contenttype(s) (Thanks sbani, see #3713)
+ - Added: Now possibile to use the search feature for specific contenttype(s) (Thanks sbani, see #3713)
  - Fixed: Wrong interpretation of max_upload_filesize / post_max_size (Thanks tvlooy, see #3732)
  - Fixed: Password reset "Error: Divide by zero" (see #3730)
 
