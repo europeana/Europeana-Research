@@ -10,6 +10,14 @@ payoff: The Europeana Research
 # name here accordingly. Don't edit the templates in theme/base-2013, because
 # they _will_ get updated in next releases
 theme: research-europeana-2015
+# Stylesheets for europeana.
+# The environment should be either `prod`, `beta` or `dev`. Prod is used for
+# labs.europeana.eu. Beta for labs-beta.europeana.eu, and dev for all other environments
+# Edit the setting for config_local.yml in /data/EuropeanaLabs/shared/config/database.yml
+stylesheet:
+  prod: http://styleguide.europeana.eu/css/research/screen.css
+  dev: http://develop.styleguide.eanadev.org/css/research/screen.css
+  beta: http://develop.styleguide.eanadev.org/css/research/screen.css
 
 # The locale that'll be used by the application. If no locale is set the
 # fallback locale is 'en_GB'. For available options, see: http://docs.bolt.cm/locales
