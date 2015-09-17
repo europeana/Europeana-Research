@@ -5,6 +5,7 @@
       - listing_listing
       - listing_search_results
 #}
+
 {% if record.relation.persons is defined %}
     {% setcontent authors = 'persons' where {id: record.relation.persons|join(' || ')} orderby 'last_name' %}
     {# be sure to have an array #}

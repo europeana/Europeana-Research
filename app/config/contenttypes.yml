@@ -997,3 +997,172 @@ footers:
   icon_many: "fa:tasks"
   icon_one: "fa:tasks"
   show_in_menu: false
+
+
+
+#################################
+#
+# DATA
+#
+# Notes: copy from labs + extra fields as asked by dasha
+#
+#
+#################################
+
+data:
+  name: Data
+  singular_name: Data
+  fields:
+    title:
+      type: text
+      required: false
+      label: "Title:"
+      variant: inline
+      class: narrow
+      group: "Data information"
+    slug:
+      type: slug
+      uses: title
+    intro:
+      type: textarea
+      label: "Intro:"
+      height: 150px
+    teaser:
+      type: html
+      required: true
+      label: "Teaser (required):"
+      height: 150px
+    body:
+      type: html
+      required: true
+      label: "Body (required):"
+      variant: inline
+      class: narrow
+    image:
+      type: image
+      required: true
+      label: "Image:"
+      extensions: [ gif, jpg, png ]
+    provided_by:
+      type: text
+      required: false
+      label: "Provided by:"
+      variant: inline
+      class: narrow
+      group: "Links"
+    provided_by_link:
+      type: text
+      required: false
+      label: "Provided by link:"
+      variant: inline
+      class: narrow
+      prefix: "<em>URL has to start with http:// or https://</em>"
+      pattern: url
+    portallink:
+      type: text
+      required: false
+      label: "Portal link:"
+      variant: inline
+      class: narrow
+      prefix: "<em>URL has to start with http:// or https://</em>"
+      pattern: url
+    apiconsolelink:
+      type: text
+      required: false
+      label: "Api console link:"
+      variant: inline
+      class: narrow
+      prefix: "<em>URL has to start with http:// or https://</em>"
+      pattern: url
+    itemtype:
+      type: text
+      required: false
+      label: "Item type:"
+      variant: inline
+      class: narrow
+      group: "Categorization"
+    language_coverage:
+      type: text
+      required: false
+      label: "Language Coverage:"
+      variant: inline
+      class: narrow
+    subjects:
+      type: text
+      required: false
+      label: "Subjects:"
+      variant: inline
+      class: narrow
+    spatial_coverage:
+      type: text
+      required: false
+      label: "Spatial coverage:"
+      variant: inline
+      class: narrow
+    counry:
+      type: text
+      required: false
+      label: "Country:"
+      variant: inline
+      class: narrow
+    time_coverage:
+      type: text
+      required: false
+      label: "Time coverage:"
+      variant: inline
+      class: narrow
+    contact_name:
+      type: text
+      required: false
+      label: "Name:"
+      variant: inline
+      class: narrow
+      group: "contact"
+    contact_email:
+      type: text
+      required: false
+      label: "Email:"
+      variant: inline
+      class: narrow
+      group: "contact"
+  taxonomy: [ tags ]
+  relations:
+    # structures:
+    #   label: "Tree parent"
+    #   multiple: false
+    #   order: title
+    persons:
+      label: "Author(s)"
+      multiple: true
+      format: "{{ item.last_name }}, {{ item.first_name }}"
+      order: last_name
+    person:
+      multiple: true
+      label: "Contact(s)"
+      order: last_name
+      format: "{{ item.last_name }}, {{ item.first_name }}"
+      order: last_name
+    pages:
+      multiple: true
+      label: "Pages"
+      order: -id
+      format: "{{ item.title|escape }}"
+    data:
+      multiple: true
+      label: "Data"
+      order: -id
+      format: "{{ item.title|escape }}"
+    blog:
+      multiple: true
+      label: "Blog posts"
+      order: -id
+      format: "{{ item.title|escape }}"
+    events:
+      multiple: true
+      label: "Events"
+      order: -id
+      format: "{{ item.title|escape }}"
+  record_template : record_data.twig
+  #listing_template: data_listing.twig
+  listing_template: listing.twig
+  recordsperpage: 1000
