@@ -23,7 +23,7 @@
 
                     <h1 class="title">{{ record.title }}</h1>
 
-                    <div class="item-meta-primary">
+                    <!-- div class="item-meta-primary">
 
                         {# set authors #}
                         {% if authors %}
@@ -34,7 +34,7 @@
                         {#  todo: where did that came from? -> update contenttype "blogpost" #}
                         {% include 'items/_item-readtime.twig' %}
 
-                    </div>
+                    </div -->
 
                     <div class="item-meta-secondary">
                         {# set date #}
@@ -51,7 +51,44 @@
 
                 <div class="prose">
                     {{ record.body|raw }}
+
+                    {# external links #}
+                    <h5>
+                        Is this a header? 
+                    </h5>
+                    {% include 'items/_item-ext-link-list.twig' %}
+
+
+                    {# categorization text #}
+                    {% include 'items/_item-categorization.twig' %}
+
                 </div>
+
+                {# meta secondary #}
+                {% if record.provided_by!="" or record.provided_by_link!="" %}
+                <div class="item-meta-secondary">
+                    
+                    {% if record.provided_by!=""%}    
+                    <span class="item-comments">
+                        <svg class="icon icon-home">
+                            <use xlink:href="#icon-home"></use>
+                        </svg>
+                        <p>{{ record.provided_by }}</p>
+                    </span>
+                    {% endif %}
+
+                    {% if record.provided_by_link!=""%}
+                    <span class="item-comments">
+                        <svg class="icon icon-external-link">
+                            <use xlink:href="#icon-external-link"></use>
+                        </svg>
+                        <a href="{{ record.provided_by_link }}">{{ record.provided_by_link }}</a>
+                    </span>
+                    {% endif %}
+
+                </div>
+            {% endif %}
+
             </div>
 
             {# set Downloads #}
@@ -62,14 +99,20 @@
             </div>
             {% endif %}
 
-            <div id="sharethis">
-                <span class='st_facebook_large' displayText='Facebook'></span>
-                <span class='st_twitter_large' st_via='EuropeanaEU Professional' displayText='Tweet'></span>
-                <span class='st_sharethis_large' displayText='ShareThis'></span>
-            </div>
+            
 
             {# related content #}
-            {% include 'items/_item-related.twig' with {title: "You might also like:", short: false} %}
+            {% include 'items/_item-related.twig' with {title: "Related content:", short: false} %}
+
+            {# related content 2 #}
+            {% if records is defined %}
+            <!--ul class="l-next_options">
+                {%- for record in records[0:6] if (record.hide_list != 1) -%}
+                   {%- include 'items/_item-lineblock.twig' with {child : record} -%}
+                {%- endfor %}
+            </ul-->
+            {% endif %}
+
 
             <aside>
                 {% include 'items/_item-comments.twig' %}

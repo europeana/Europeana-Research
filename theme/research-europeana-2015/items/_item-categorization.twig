@@ -1,0 +1,91 @@
+{# item ext-categorization 
+
+used in:
+* record_data.twig
+
+#}
+
+{% if
+    record.itemtype !="" or
+    record.language_coverage !="" or
+    record.subjects !="" or
+    record.spatial_coverage !="" or
+    record.country !="" or
+    record.time_coverage !=""
+%}
+<ul class="categories-list">
+    
+    {% if record.itemtype !="" %}
+    <li>
+        <span class="item-categories">
+            <svg class="icon icon-label">
+                <use xlink:href="#icon-label"></use>
+            </svg>
+            <span class="title-category">Item Type</span>
+        </span>
+        <p>{{ record.itemtype }}</p>
+    </li>
+    {% endif %}
+
+    {% if record.language_coverage !="" %}
+    <li>
+        <span class="item-categories">
+            <svg class="icon icon-quote">
+                <use xlink:href="#icon-quote"></use>
+            </svg>
+            <span class="title-category">Language Coverage</span>
+        </span>
+        <p>{{ record.language_coverage }}</p>
+    </li>
+    {% endif %}
+
+    {% if record.subjects !="" %}
+    <li>
+        <span class="item-categories">
+            <svg class="icon icon-signpost">
+                <use xlink:href="#icon-signpost"></use>
+            </svg>
+            <span class="title-category">Subjects</span>
+        </span>
+        <p>{{ record.subjects }}</p>
+    </li>
+    {% endif %}
+
+    {% if record.spatial_coverage !="" %}
+    <li>
+        <span class="item-categories">
+            <svg class="icon icon-map">
+                <use xlink:href="#icon-map"></use>
+            </svg>
+            <span class="title-category">Spacial Coverage</span>
+        </span>
+        <p>{{ record.spatial_coverage }}</p>
+    </li>
+    {% endif %}
+
+    {% if record.country !="" %}
+    <li>
+        <span class="item-categories">
+            <svg class="icon icon-map-marker">
+                <use xlink:href="#icon-map-marker"></use>
+            </svg>
+            <span class="title-category">Country</span>
+        </span>
+        <p>{{ record.country }}</p>
+    </li>
+    {% endif %}
+
+    {% if record.time_coverage !="" %}
+    <li>
+        <span class="item-categories">
+            <svg class="icon icon-clock">
+                <use xlink:href="#icon-clock"></use>
+            </svg>
+            <span class="title-category">Time Coverage</span>
+        </span>
+        <p>{{ record.time_coverage }}</p>
+    </li>
+    {% endif %}
+</ul>
+
+{% endif %}
