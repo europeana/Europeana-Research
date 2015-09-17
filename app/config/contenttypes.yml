@@ -1099,7 +1099,7 @@ data:
       label: "Spatial coverage:"
       variant: inline
       class: narrow
-    counry:
+    country:
       type: text
       required: false
       label: "Country:"
@@ -1131,11 +1131,6 @@ data:
     #   label: "Tree parent"
     #   multiple: false
     #   order: title
-    persons:
-      label: "Author(s)"
-      multiple: true
-      format: "{{ item.last_name }}, {{ item.first_name }}"
-      order: last_name
     person:
       multiple: true
       label: "Contact(s)"
