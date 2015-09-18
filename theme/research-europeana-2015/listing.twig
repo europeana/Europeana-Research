@@ -112,7 +112,23 @@
         </div><!--
 
      --><div class="l-sidebar">
-             <div class="inner">
+            
+            {% if contenttype.slug in ['data'] %}
+            <div class="subnav">
+
+                {# NOT DONE -> functionality needs to be implemented  - tags #}
+                <h4>Filter by:</h4>
+                <ul class="tags tags-large">
+                    {% for tag in tags %}
+                    <li><a href="" class="tag" >{{ tag }}</a></li>
+                    {% endfor %}
+
+                </ul>
+            </div>
+            
+            {% else %}
+
+            <div class="inner">
                  {#
                      get main contacts. definied in contenttype 'person'
                      example: field "contact_blog" -> main contact of the blogposts
@@ -132,8 +148,10 @@
                      {% endif %}
                      {% include 'items/_item-help.twig' with { records: contacts} %}
                  {% endif %}
-
+            
             </div>
+            {% endif %}
+
 
         </div>
     </div>

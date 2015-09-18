@@ -55,6 +55,22 @@
                     {# categorization text #}
                     {% include 'items/_item-categorization.twig' %}
 
+                    {# links for portal and api console #}
+                    {% if record.apiconsolelink!="" or record.portallink!="" %}
+                    <div class="destination-links">
+                        <h4>View this item in:</h4>
+                        
+                        {% if record.apiconsolelink!="" %}
+                        <a href="{{ record.apiconsolelink }}" title="View in the API console" class="btn">API console</a>
+                        {% endif %}
+
+                        {% if record.portallink!="" %}
+                        <a href="{{ record.portallink }}" title="View in the Portal" class="btn">Portal</a>
+                        {% endif %}
+                        
+                    </div>
+                    {% endif %}
+
                 </div>
 
                 {# meta secondary #}
@@ -97,16 +113,7 @@
             {# related content #}
             {% include 'items/_item-related.twig' with {title: "Related content:", short: false} %}
 
-            {# related content 2 #}
-            {% if records is defined %}
-            <!--ul class="l-next_options">
-                {%- for record in records[0:6] if (record.hide_list != 1) -%}
-                   {%- include 'items/_item-lineblock.twig' with {child : record} -%}
-                {%- endfor %}
-            </ul-->
-            {% endif %}
-
-
+            
             <aside>
                 {% include 'items/_item-comments.twig' %}
             </aside>
