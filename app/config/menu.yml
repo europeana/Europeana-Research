@@ -5,6 +5,9 @@ primary:
   - label: 'About our data'
     path: /about-our-data
     title: 'How the Europeana dataset is aggregated'
+  - label: 'Our data'
+    path: /data
+    title: 'The Europeana dataset'
   - label: 'Work with us'
     path: /work-with-us
     title: 'How to work with us'
