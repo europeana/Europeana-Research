@@ -80,7 +80,7 @@ chapters:
 
 
 ##############################################
-# categorization for DATA contenttype        
+# categorization for DATA contenttype
 #   - itemtype
 #   - languagecoverage
 #   - subjects
@@ -105,6 +105,7 @@ itemtype:
         - "Engraving"
         # Europeana can enter more terms here, if needed.
     multiple: true
+    autocomplete: true
 
 languagecoverage:
     name: Language coverage
@@ -112,7 +113,7 @@ languagecoverage:
     singular_name: Language coverage
     singular_slug: languagecoverage
     behaves_like: categories
-    options: 
+    options:
         - "Afar"
         - "Abkhazian"
         - "Achinese"
@@ -598,6 +599,7 @@ languagecoverage:
         - "Zulu"
         - "Zuni"
     multiple: true
+    autocomplete: true
 
 subjects:
     name: Subjects
@@ -620,6 +622,7 @@ subjects:
         - "Philosophy"
         # Europeana can enter more terms here, if needed.
     multiple: true
+    autocomplete: true
 
 
 spatialcoverage:
@@ -684,6 +687,7 @@ spatialcoverage:
         - "Vatican City"
         # Europeana can enter more terms here, if needed.
     multiple: true
+    autocomplete: true
 
 country:
     name: Country
@@ -746,6 +750,7 @@ country:
         - "United Kingdom"
         - "Vatican City"
     multiple: true
+    autocomplete: true
 
 timecoverage:
     name: Time coverage
