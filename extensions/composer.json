@@ -4,7 +4,8 @@
         "bolt/rssfeed": "v2.0.1",
         "bolt/sitemap": "~1.0",
         "europeana/filebrowser": "dev-master",
-        "foundrycode/boltredirector": "1.0.1"
+        "foundrycode/boltredirector": "1.0.1",
+        "jadwigo/taxonomylist": "^0.3.0"
     },
     "repositories": {
         "bolt": {

@@ -11,4 +11,5 @@ return array(
     $vendorDir . '/bolt/rssfeed/init.php',
     $vendorDir . '/foundrycode/boltredirector/init.php',
     $vendorDir . '/bolt/sitemap/init.php',
+    $vendorDir . '/jadwigo/taxonomylist/init.php',
 );

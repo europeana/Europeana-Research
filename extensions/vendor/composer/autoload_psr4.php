@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'FileBrowser\\' => array($vendorDir . '/europeana/filebrowser'),
     'Disqus\\' => array($vendorDir . '/bolt/disqus'),
+    'Bolt\\Extension\\Jadwigo\\TaxonomyList\\' => array($vendorDir . '/jadwigo/taxonomylist'),
     'Bolt\\Extension\\FoundryCode\\' => array($vendorDir . '/foundrycode/boltredirector'),
     'Bolt\\Extension\\Europeana\\StructureTree\\' => array($baseDir . '/local/europeana/structure-tree'),
     'Bolt\\Extension\\Europeana\\GoogleSearch\\' => array($baseDir . '/local/europeana/google-search'),

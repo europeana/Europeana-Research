@@ -62,7 +62,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/europeana/filebrowser/zipball/7a73bbbe5bc650bd78aa835028d97c9906574008",
+            "url": "https://api.github.com/repos/europeana/filebrowser/zipball/0315c05f3e07172e9caa86129e8617ee916adc08",
             "reference": "7a73bbbe5bc650bd78aa835028d97c9906574008",
             "shasum": ""
         },
@@ -257,6 +257,59 @@
         "support": {
             "source": "https://github.com/bolt/Sitemap/tree/1.0.2",
             "issues": "https://github.com/bolt/Sitemap/issues"
+        }
+    },
+    {
+        "name": "jadwigo/taxonomylist",
+        "version": "v0.3",
+        "version_normalized": "0.3.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/jadwigo/TaxonomyList.git",
+            "reference": "f207a43d8ade441a80825454080f6469e00b3913"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/jadwigo/TaxonomyList/zipball/f207a43d8ade441a80825454080f6469e00b3913",
+            "reference": "f207a43d8ade441a80825454080f6469e00b3913",
+            "shasum": ""
+        },
+        "require": {
+            "bolt/bolt": ">=2.0.0,<3.0.0"
+        },
+        "time": "2015-08-28 10:19:30",
+        "type": "bolt-extension",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.0.*"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "files": [
+                "init.php"
+            ],
+            "psr-4": {
+                "Bolt\\Extension\\Jadwigo\\TaxonomyList\\": ""
+            }
+        },
+        "authors": [
+            {
+                "name": "Lodewijk Evers",
+                "email": "lodewijk@twokings.nl",
+                "homepage": "https://github.com/jadwigo"
+            }
+        ],
+        "description": "An extension that adds a twig tag for Taxonomy Listings.",
+        "keywords": [
+            "category",
+            "listing",
+            "tags",
+            "taxonomy"
+        ],
+        "support": {
+            "source": "https://github.com/jadwigo/TaxonomyList/tree/v0.3",
+            "issues": "https://github.com/jadwigo/TaxonomyList/issues"
         }
     }
 ]
