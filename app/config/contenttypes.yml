@@ -1074,43 +1074,43 @@ data:
       class: narrow
       prefix: "<em>URL has to start with http:// or https://</em>"
       pattern: url
-    itemtype:
-      type: text
-      required: false
-      label: "Item type:"
-      variant: inline
-      class: narrow
-      group: "Categorization"
-    language_coverage:
-      type: text
-      required: false
-      label: "Language Coverage:"
-      variant: inline
-      class: narrow
-    subjects:
-      type: text
-      required: false
-      label: "Subjects:"
-      variant: inline
-      class: narrow
-    spatial_coverage:
-      type: text
-      required: false
-      label: "Spatial coverage:"
-      variant: inline
-      class: narrow
-    country:
-      type: text
-      required: false
-      label: "Country:"
-      variant: inline
-      class: narrow
-    time_coverage:
-      type: text
-      required: false
-      label: "Time coverage:"
-      variant: inline
-      class: narrow
+#    itemtype:
+#      type: text
+#      required: false
+#      label: "Item type:"
+#      variant: inline
+#      class: narrow
+#      group: "Categorization"
+#    language_coverage:
+#      type: text
+#      required: false
+#      label: "Language Coverage:"
+#      variant: inline
+#      class: narrow
+#    subjects:
+#      type: text
+#      required: false
+#      label: "Subjects:"
+#      variant: inline
+#      class: narrow
+#    spatial_coverage:
+#      type: text
+#      required: false
+#      label: "Spatial coverage:"
+#      variant: inline
+#      class: narrow
+#    country:
+#      type: text
+#      required: false
+#      label: "Country:"
+#      variant: inline
+#      class: narrow
+#    time_coverage:
+#      type: text
+#      required: false
+#      label: "Time coverage:"
+#      variant: inline
+#      class: narrow
     contact_name:
       type: text
       required: false
@@ -1125,7 +1125,7 @@ data:
       variant: inline
       class: narrow
       group: "contact"
-  taxonomy: [ tags ]
+  taxonomy: [ tags, itemtype, languagecoverage, subjects, spatialcoverage, country, timecoverage ]
   relations:
     # structures:
     #   label: "Tree parent"
@@ -1161,3 +1161,5 @@ data:
   #listing_template: data_listing.twig
   listing_template: listing.twig
   recordsperpage: 1000
+  icon_many: "fa:object-group"
+  icon_one: "fa:object-group"

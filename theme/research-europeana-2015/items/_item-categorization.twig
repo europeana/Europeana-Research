@@ -3,19 +3,22 @@
 used in:
 * record_data.twig
 
+NOTE - These are taxonomies!
+
 #}
 
 {% if
-    record.itemtype !="" or
-    record.language_coverage !="" or
-    record.subjects !="" or
-    record.spatial_coverage !="" or
-    record.country !="" or
-    record.time_coverage !=""
+    record.taxonomy.itemtype !="" or
+    record.taxonomy.language_coverage !="" or
+    record.taxonomy.subjects !="" or
+    record.taxonomy.spatial_coverage !="" or
+    record.taxonomy.country !="" or
+    record.taxonomy.time_coverage !=""
 %}
+
 <ul class="categories-list">
     
-    {% if record.itemtype !="" %}
+    {% if record.taxonomy.itemtype is defined %}
     <li>
         <span class="item-categories">
             <svg class="icon icon-label">
@@ -23,11 +26,16 @@ used in:
             </svg>
             <span class="title-category">Item Type</span>
         </span>
-        <p>{{ record.itemtype }}</p>
+        {% set itemtypes = record.taxonomy.itemtype %}
+        <p>
+            {% for item in itemtypes %}
+                {{ item }}{% if not loop.last %}, {% endif %}
+            {% endfor %} 
+        </p>
     </li>
     {% endif %}
 
-    {% if record.language_coverage !="" %}
+    {% if record.taxonomy.languagecoverage is defined %}
     <li>
         <span class="item-categories">
             <svg class="icon icon-quote">
@@ -35,11 +43,16 @@ used in:
             </svg>
             <span class="title-category">Language Coverage</span>
         </span>
-        <p>{{ record.language_coverage }}</p>
+        {% set languagecoverage = record.taxonomy.languagecoverage %}
+        <p>
+            {% for item in languagecoverage %}
+                {{ item }}{% if not loop.last %}, {% endif %}
+            {% endfor %} 
+        </p>
     </li>
     {% endif %}
 
-    {% if record.subjects !="" %}
+    {% if record.taxonomy.subjects is defined %}
     <li>
         <span class="item-categories">
             <svg class="icon icon-signpost">
@@ -47,11 +60,16 @@ used in:
             </svg>
             <span class="title-category">Subjects</span>
         </span>
-        <p>{{ record.subjects }}</p>
+        {% set subjects = record.taxonomy.subjects %}
+        <p>
+            {% for item in subjects %}
+                {{ item }}{% if not loop.last %}, {% endif %}
+            {% endfor %} 
+        </p>
     </li>
     {% endif %}
 
-    {% if record.spatial_coverage !="" %}
+    {% if record.taxonomy.spatialcoverage is defined %}
     <li>
         <span class="item-categories">
             <svg class="icon icon-map">
@@ -59,11 +77,16 @@ used in:
             </svg>
             <span class="title-category">Spacial Coverage</span>
         </span>
-        <p>{{ record.spatial_coverage }}</p>
+        {% set spatialcoverage = record.taxonomy.spatialcoverage %}
+        <p>
+            {% for item in spatialcoverage %}
+                {{ item }}{% if not loop.last %}, {% endif %}
+            {% endfor %} 
+        </p>
     </li>
     {% endif %}
 
-    {% if record.country !="" %}
+    {% if record.taxonomy.country is defined %}
     <li>
         <span class="item-categories">
             <svg class="icon icon-map-marker">
@@ -71,11 +94,16 @@ used in:
             </svg>
             <span class="title-category">Country</span>
         </span>
-        <p>{{ record.country }}</p>
+        {% set country = record.taxonomy.country %}
+        <p>
+            {% for item in country %}
+                {{ item }}{% if not loop.last %}, {% endif %}
+            {% endfor %} 
+        </p>
     </li>
     {% endif %}
 
-    {% if record.time_coverage !="" %}
+    {% if record.taxonomy.timecoverage is defined %}
     <li>
         <span class="item-categories">
             <svg class="icon icon-clock">
@@ -83,7 +111,12 @@ used in:
             </svg>
             <span class="title-category">Time Coverage</span>
         </span>
-        <p>{{ record.time_coverage }}</p>
+        {% set timecoverage = record.taxonomy.timecoverage %}
+        <p>
+            {% for item in timecoverage %}
+                {{ item }}{% if not loop.last %}, {% endif %}
+            {% endfor %} 
+        </p>
     </li>
     {% endif %}
 </ul>
