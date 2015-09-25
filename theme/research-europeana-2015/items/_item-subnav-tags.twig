@@ -1,0 +1,39 @@
+{#
+  used in:
+      - listing.twig
+#}
+
+<div class="subnav">
+
+{# Add new taxonomies to show if needed. #}    
+{% set categorizations = {
+    'itemtype':         'Item Type',
+    'languagecoverage': 'Language Coverage',
+    'subjects':         'Subjects',
+    'spatialcoverage':  'Spatial Coverage',
+    'country':          'Country',
+    'timecoverage':     'Time Coverage'
+    }
+%}
+
+{% for item, name in categorizations %}
+
+    {% set list = taxonomylist(item, true) %}
+    <h4>Filter by {{name}}</h4>
+
+    <ul class="tags tags-large">
+    {% for item in list if item.count>0 %}
+        
+        <li>
+            <a class="tag taxonomy-{{ item.slug }}" href="{{ item.link }}" title="{{ item.name }}">
+                {{ item.name }} 
+                &nbsp;({{ item.count }})
+            </a>
+        </li>
+        
+    {% endfor %}
+    </ul>
+
+{% endfor %}
+
+</div>

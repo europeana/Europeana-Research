@@ -113,19 +113,16 @@
 
      --><div class="l-sidebar">
             
-            {% if contenttype.slug in ['data'] %}
-            <div class="subnav">
-
-                {# TO DO -> functionality needs to be implemented  - tags #}
-                <h4>Filter by:</h4>
-                <ul class="tags tags-large">
-                    {% for tag in tags %}
-                    <li><a href="" class="tag" >{{ tag }}</a></li>
-                    {% endfor %}
-
-                </ul>
-            </div>
             
+            {% if contenttype.slug in ['data'] %}
+            
+                {% include "items/_item-subnav-tags.twig" %}
+            
+            {# if the listing is for a filtered taxonomy, e.g. for a filtered 'Data'-list #}
+            {% elseif contenttype.slug in app.config.get('taxonomy')|keys %}
+
+                {% include "items/_item-subnav-filtered.twig" %}
+
             {% else %}
 
             <div class="inner">

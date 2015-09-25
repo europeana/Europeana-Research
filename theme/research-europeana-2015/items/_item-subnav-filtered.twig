@@ -1,0 +1,23 @@
+{#
+  used in:
+      - listing.twig
+#}
+
+{# check where we are; what tag is clicked to get this result #}
+{% set current = app.request.get('_route_params') %}
+{% set alltaxonomies = app.config.get('taxonomy') %}
+
+{% set currentfilter = alltaxonomies[ current.taxonomytype ].options[ current.slug ] %}
+{% set currenttype = alltaxonomies[ current.taxonomytype].name %}
+
+<div class="subnav">
+    <h4>Results for {{currenttype}}</h4>
+    <ul class="tags tags-large">
+        <li>
+            <a class="tag">{{currentfilter}}</a>
+        </li>
+    </ul>    
+     
+
+    <p><a href="/data">Clear filter</a></p>
+</div>
