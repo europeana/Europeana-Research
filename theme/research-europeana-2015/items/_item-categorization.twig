@@ -7,118 +7,52 @@ NOTE - These are taxonomies!
 
 #}
 
+{# Only show <UL> if at least one taxonomy has content #} 
 {% if
-    record.taxonomy.itemtype !="" or
-    record.taxonomy.language_coverage !="" or
-    record.taxonomy.subjects !="" or
-    record.taxonomy.spatial_coverage !="" or
-    record.taxonomy.country !="" or
-    record.taxonomy.time_coverage !=""
+    record.taxonomy.itemtype is defined or
+    record.taxonomy.languagecoverage is defined or
+    record.taxonomy.subjects is defined or
+    record.taxonomy.spatialcoverage is defined or
+    record.taxonomy.country is defined or
+    record.taxonomy.timecoverage is defined
 %}
 
 <ul class="categories-list">
     
-    {% if record.taxonomy.itemtype is defined %}
-    <li>
-        <span class="item-categories">
-            <svg class="icon icon-label">
-                <use xlink:href="#icon-label"></use>
-            </svg>
-            <span class="title-category">Item Type</span>
-        </span>
-        {% set itemtypes = record.taxonomy.itemtype %}
-        <p>
-            {% for item in itemtypes %}
-                {{ item }}{% if not loop.last %}, {% endif %}
-            {% endfor %} 
-        </p>
-    </li>
-    {% endif %}
+{# Add new taxonomies to show if needed. #}    
+{% set categorizations = {
+    'itemtype':         { name: 'Item Type',            icon: 'icon-label'      },
+    'languagecoverage': { name: 'Language Coverage',    icon: 'icon-quote'      },
+    'subjects':         { name: 'Subjects',             icon: 'icon-signpost'   },
+    'spatialcoverage':  { name: 'Spatial Coverage',     icon: 'icon-map'        },
+    'country':          { name: 'Country',              icon: 'icon-map-marker' },
+    'timecoverage':     { name: 'Time Coverage',        icon: 'icon-clock'      }
+    }
+%}
 
-    {% if record.taxonomy.languagecoverage is defined %}
-    <li>
-        <span class="item-categories">
-            <svg class="icon icon-quote">
-                <use xlink:href="#icon-quote"></use>
-            </svg>
-            <span class="title-category">Language Coverage</span>
-        </span>
-        {% set languagecoverage = record.taxonomy.languagecoverage %}
-        <p>
-            {% for item in languagecoverage %}
-                {{ item }}{% if not loop.last %}, {% endif %}
-            {% endfor %} 
-        </p>
-    </li>
-    {% endif %}
 
-    {% if record.taxonomy.subjects is defined %}
-    <li>
-        <span class="item-categories">
-            <svg class="icon icon-signpost">
-                <use xlink:href="#icon-signpost"></use>
-            </svg>
-            <span class="title-category">Subjects</span>
-        </span>
-        {% set subjects = record.taxonomy.subjects %}
-        <p>
-            {% for item in subjects %}
-                {{ item }}{% if not loop.last %}, {% endif %}
-            {% endfor %} 
-        </p>
-    </li>
-    {% endif %}
+{# forloop for all categorizations #}
+{% for type, properties in categorizations %}
 
-    {% if record.taxonomy.spatialcoverage is defined %}
-    <li>
-        <span class="item-categories">
-            <svg class="icon icon-map">
-                <use xlink:href="#icon-map"></use>
-            </svg>
-            <span class="title-category">Spacial Coverage</span>
-        </span>
-        {% set spatialcoverage = record.taxonomy.spatialcoverage %}
-        <p>
-            {% for item in spatialcoverage %}
-                {{ item }}{% if not loop.last %}, {% endif %}
-            {% endfor %} 
-        </p>
-    </li>
-    {% endif %}
+    {% if record.taxonomy[type] is defined %}
+        <li>
+            <span class="item-categories">
+                <svg class="icon {{properties.icon}}">
+                    <use xlink:href="#{{properties.icon}}"></use>
+                </svg>
+                <span class="title-category">{{properties.name}}</span>
+            </span>
+            {% set items = record.taxonomy[type] %}
+            <p>
+                {% for link,item in items %}
+                    <!--{{link}}-->{{ item }}{% if not loop.last %}, {% endif %}
+                {% endfor %} 
+            </p>
+        </li>
+        {% endif %}
+    {% endfor %}
 
-    {% if record.taxonomy.country is defined %}
-    <li>
-        <span class="item-categories">
-            <svg class="icon icon-map-marker">
-                <use xlink:href="#icon-map-marker"></use>
-            </svg>
-            <span class="title-category">Country</span>
-        </span>
-        {% set country = record.taxonomy.country %}
-        <p>
-            {% for item in country %}
-                {{ item }}{% if not loop.last %}, {% endif %}
-            {% endfor %} 
-        </p>
-    </li>
-    {% endif %}
 
-    {% if record.taxonomy.timecoverage is defined %}
-    <li>
-        <span class="item-categories">
-            <svg class="icon icon-clock">
-                <use xlink:href="#icon-clock"></use>
-            </svg>
-            <span class="title-category">Time Coverage</span>
-        </span>
-        {% set timecoverage = record.taxonomy.timecoverage %}
-        <p>
-            {% for item in timecoverage %}
-                {{ item }}{% if not loop.last %}, {% endif %}
-            {% endfor %} 
-        </p>
-    </li>
-    {% endif %}
 </ul>
 
 {% endif %}
