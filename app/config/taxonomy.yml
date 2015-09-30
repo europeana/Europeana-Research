@@ -757,5 +757,14 @@ timecoverage:
     slug: timecoverage
     singular_name: Time coverage
     singular_slug: timecoverage
-    behaves_like: tags
+    behaves_like: categories
+    options:
+        - "Ancient World"
+        - "Medieval"    
+        - "Early Modern"
+        - "18th Century"
+        - "19th Century"
+        - "1900-1945"
+        - "1945 Onwards"
     multiple: true
+    autocomplete: true

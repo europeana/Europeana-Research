@@ -3,15 +3,20 @@
       - listing.twig
 #}
 
-<div class="subnav">
-
-{# Add new taxonomies to show if needed. #}    
-{% set categorizations = {
+{# all avilable filters: 
     'itemtype':         'Item Type',
     'languagecoverage': 'Language Coverage',
     'subjects':         'Subjects',
     'spatialcoverage':  'Spatial Coverage',
     'country':          'Country',
+    'timecoverage':     'Time Coverage'
+#}
+
+<div class="subnav">
+
+{# Add new taxonomies to show if needed. #}    
+{% set categorizations = {
+    'spatialcoverage':  'Spatial Coverage',
     'timecoverage':     'Time Coverage'
     }
 %}
