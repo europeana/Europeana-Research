@@ -732,5 +732,6 @@ timecoverage:
         - "19th Century"
         - "1900-1945"
         - "1945 Onwards"
+        - "Multiple Eras"
     multiple: true
     autocomplete: true
