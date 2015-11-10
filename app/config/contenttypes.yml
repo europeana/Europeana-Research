@@ -956,38 +956,39 @@ footers:
   fields:
     title:
       type: text
-      required: false
+      label: "Title: (required):"
+      required: true
     # footer logo image
     image:
       type: image
       # required: true
-      label: "Image: (required):"
+      label: "Image:"
       attrib: title
       extensions: [ gif, jpg, png ]
     socialmedia:
       type: html
       # required: true
-      label: "Social media links (required):"
+      label: "Social media links:"
       height: 300px
     linklist-left:
       type: html
       # required: true
-      label: "Linklist left (required):"
+      label: "Linklist left:"
       height: 300px
     linklist-right:
       type: html
       # required: true
-      label: "Linklist right (required):"
+      label: "Linklist right:"
       height: 300px
     mission:
       type: html
       # required: true
-      label: "Mission (required):"
+      label: "Mission:"
       height: 300px
     linklist-other:
       type: html
       # required: true
-      label: "Linklist others (required):"
+      label: "Linklist others:"
       height: 300px
   relations:
     locations:
