@@ -261,23 +261,23 @@
     },
     {
         "name": "jadwigo/taxonomylist",
-        "version": "v0.3",
-        "version_normalized": "0.3.0.0",
+        "version": "v0.4",
+        "version_normalized": "0.4.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/jadwigo/TaxonomyList.git",
-            "reference": "f207a43d8ade441a80825454080f6469e00b3913"
+            "reference": "4c3da52882c81ee3249941af97e5aa061551fad7"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/jadwigo/TaxonomyList/zipball/f207a43d8ade441a80825454080f6469e00b3913",
-            "reference": "f207a43d8ade441a80825454080f6469e00b3913",
+            "url": "https://api.github.com/repos/jadwigo/TaxonomyList/zipball/4c3da52882c81ee3249941af97e5aa061551fad7",
+            "reference": "4c3da52882c81ee3249941af97e5aa061551fad7",
             "shasum": ""
         },
         "require": {
             "bolt/bolt": ">=2.0.0,<3.0.0"
         },
-        "time": "2015-08-28 10:19:30",
+        "time": "2015-11-16 17:03:48",
         "type": "bolt-extension",
         "extra": {
             "branch-alias": {
@@ -302,13 +302,16 @@
         ],
         "description": "An extension that adds a twig tag for Taxonomy Listings.",
         "keywords": [
+            "categories",
             "category",
             "listing",
+            "tagcloud",
+            "tagclouds",
             "tags",
             "taxonomy"
         ],
         "support": {
-            "source": "https://github.com/jadwigo/TaxonomyList/tree/v0.3",
+            "source": "https://github.com/jadwigo/TaxonomyList/tree/v0.4",
             "issues": "https://github.com/jadwigo/TaxonomyList/issues"
         }
     }

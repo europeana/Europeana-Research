@@ -24,7 +24,9 @@
 
 {% for item, name in categorizations %}
 
-    {% set list = taxonomylist(item, true) %}
+    {# set list = taxonomylist(item, true) #}
+    {% set list = taxonomylist(item, { 'contenttype': 'data' } ) %}
+
     <h4>Filter by {{name}}</h4>
 
     <ul class="tags tags-large">
