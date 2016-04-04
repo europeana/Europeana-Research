@@ -96,21 +96,23 @@ itemtype:
     singular_slug: itemtype
     behaves_like: categories
     options:
-        - "Manuscripts"
-        - "Books"
-        - "Posters"
-        - "Photographs"
-        - "Prints"
-        - "Letters & Diaries"
-        - "Pamphlets"
-        - "Drawings"
-        - "Newspapers"
-        - "Maps"
-        - "Paintings"
-        - "Sheet Music"
-        - "Documents"
         - "Audio"
+        - "Books"
+        - "Documents"
+        - "Drawings"
         - "Film / Video"
+        - "Letters & Diaries"
+        - "Manuscripts"
+        - "Maps"
+        - "Newspapers"
+        - "Paintings"
+        - "Pamphlets"
+        - "Periodicals"
+        - "Photographs"
+        - "Postcards"
+        - "Posters"
+        - "Prints"
+        - "Sheet Music"
         # Europeana can enter more terms here, if needed.
     multiple: true
     autocomplete: true
