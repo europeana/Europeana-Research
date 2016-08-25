@@ -50,9 +50,9 @@
                 </div>
 
                 <div class="prose">
-                    
+
                     <p>{{ record.intro|raw }}</p>
-                    
+
                     {{ record.body|raw }}
 
                     {# categorization text #}
@@ -62,15 +62,15 @@
                     {% if record.apiconsolelink!="" or record.portallink!="" %}
                     <div class="destination-links">
                         <h4>View this item in:</h4>
-                        
+
                         {% if record.apiconsolelink!="" %}
                         <a href="{{ record.apiconsolelink }}" title="View in the API console" class="btn">API console</a>
                         {% endif %}
 
                         {% if record.portallink!="" %}
-                        <a href="{{ record.portallink }}" title="View in the Portal" class="btn">Portal</a>
+                        <a href="{{ record.portallink }}" title="View in the Europeana Collections" class="btn">Europeana Collections</a>
                         {% endif %}
-                        
+
                     </div>
                     {% endif %}
 
@@ -79,8 +79,8 @@
                 {# meta secondary #}
                 {% if record.provided_by!="" or record.provided_by_link!="" %}
                 <div class="item-meta-secondary">
-                    
-                    {% if record.provided_by!=""%}    
+
+                    {% if record.provided_by!=""%}
                     <span class="item-comments">
                         <svg class="icon icon-home">
                             <use xlink:href="#icon-home"></use>
@@ -111,12 +111,12 @@
             </div>
             {% endif %}
 
-            
+
 
             {# related content #}
             {% include 'items/_item-related.twig' with {title: "Related content:", short: false} %}
 
-            
+
             <aside>
                 {% include 'items/_item-comments.twig' %}
             </aside>
