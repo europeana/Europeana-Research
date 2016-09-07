@@ -17,8 +17,8 @@ theme: research-europeana-2015
 # Edit the setting for config_local.yml in /data/EuropeanaResearch/shared/config/database.yml
 stylesheet:
   prod: https://europeana-styleguide-production.s3.amazonaws.com/v0.1/css/research/screen.css
-  dev: http://develop.styleguide.eanadev.org/v/0.1/css/research/screen.css
-  beta: http://develop.styleguide.eanadev.org/v/0.1/css/research/screen.css
+  dev: https://europeana-styleguide-test.s3.amazonaws.com/css/research/screen.css
+  beta: https://europeana-styleguide-test.s3.amazonaws.com/css/research/screen.css
 
 # The locale that'll be used by the application. If no locale is set the
 # fallback locale is 'en_GB'. For available options, see: http://docs.bolt.cm/locales
