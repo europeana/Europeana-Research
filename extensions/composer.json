@@ -5,7 +5,7 @@
         "bolt/sitemap": "~1.0",
         "europeana/filebrowser": "dev-master",
         "foundrycode/boltredirector": "1.0.1",
-        "jadwigo/taxonomylist": "^0.3.0"
+        "jadwigo/taxonomylist": "^0.4.0"
     },
     "repositories": {
         "bolt": {

@@ -2,18 +2,18 @@ primary:
   - label: 'Featured collections'
     title: 'These are featured Europeana collections of interest to the research community'
     path: /collections
-  - label: 'About our data'
-    path: /about-our-data
-    title: 'How the Europeana dataset is aggregated'
+  # - label: 'About our data'
+  #   path: /about-our-data
+  #   title: 'How the Europeana dataset is aggregated'
   - label: 'Our data'
     path: /data
     title: 'The Europeana dataset'
   - label: 'Work with us'
     path: /work-with-us
     title: 'How to work with us'
-  - label: 'About us'
-    path: /about-us
-    title: 'About Europeana Research'
+  # - label: 'About us'
+  #   path: /about-us
+  #   title: 'About Europeana Research'
 
 footer:
   - title: Home
